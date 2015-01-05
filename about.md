@@ -6,6 +6,14 @@ permalink: /about/
 
 # Developers
 
+## Current developers
+
+[Kevin Gillieron](https://github.com/gilliek)
+
+[Robin Hahling](https://github.com/Rolinh)
+
+[Laurent Weingart](https://github.com/lweingart)
+
 ## Past developers
 
 [Daniel Espino](https://github.com/akathorn)
@@ -16,10 +24,3 @@ permalink: /about/
 
 [Clément Doucet](https://github.com/Itah)
 
-## Current developers
-
-[Kevin Gillieron](https://github.com/gilliek)
-
-[Robin Hahling](https://github.com/Rolinh)
-
-[Laurent Weingart](https://github.com/lweingart)
