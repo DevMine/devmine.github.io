@@ -6,3 +6,12 @@
     border-collapse:separate; 
     border-spacing:1em;
 }
+
+.gh-avatar {
+    max-width: 100px;
+    border-radius: 500px;
+}
+
+.gh-media {
+    margin-top: 20px;
+}
