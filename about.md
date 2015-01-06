@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 
-# Developers
+# Authors
 
-## Current developers
+## Developers
 
 [Kevin Gillieron](https://github.com/gilliek)
 
@@ -14,7 +14,7 @@ permalink: /about/
 
 [Laurent Weingart](https://github.com/lweingart)
 
-## Past developers
+## Past contributors
 
 [Daniel Espino](https://github.com/akathorn)
 
