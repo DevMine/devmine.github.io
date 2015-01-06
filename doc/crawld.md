@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Crawld
+title: doc/crawld
 permalink: /doc/crawld/
 ---
 

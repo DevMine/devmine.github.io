@@ -1,5 +1,5 @@
 ---
 layout: default
-title: Features
+title: doc/features
 permalink: /doc/features/
 ---

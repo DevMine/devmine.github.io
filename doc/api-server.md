@@ -1,5 +1,5 @@
 ---
 layout: default
-title: Api server
+title: doc/API-server
 permalink: /doc/api-server/
 ---

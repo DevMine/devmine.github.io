@@ -1,5 +1,5 @@
 ---
 layout: default
-title: Srctool
+title: doc/srctool
 permalink: /doc/srctool/
 ---

@@ -1,5 +1,5 @@
 ---
 layout: default
-title: Devmine web
+title: doc/web interface
 permalink: /doc/web/
 ---

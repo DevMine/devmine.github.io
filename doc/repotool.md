@@ -1,5 +1,5 @@
 ---
 layout: default
-title: Repotool
+title: doc/repotool
 permalink: /doc/repotool/
 ---

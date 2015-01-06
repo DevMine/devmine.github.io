@@ -1,5 +1,5 @@
 ---
 layout: default
-title: Srcanlzr
+title: doc/srcanlzr
 permalink: /doc/srcanlzr/
 ---
