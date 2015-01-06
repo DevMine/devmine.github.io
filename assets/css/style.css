@@ -1,3 +1,8 @@
 .devmine-margin {
     margin-top: 70px;
 }
+
+.devmine-table {
+    border-collapse:separate; 
+    border-spacing:1em;
+}
