@@ -31,7 +31,6 @@ body {
   text-align: center;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 5px;
 }
 .navbar-brand {
     padding: 10px !important;
@@ -130,8 +129,4 @@ code {
 
 .dm-gh-media {
   margin-top: 20px !important;
-}
-
-.dm-fill-box {
-  min-height: 15px;
 }
