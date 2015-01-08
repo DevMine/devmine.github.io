@@ -18,20 +18,35 @@ system and this component is essential to glue all sub-projects together.
 Current implementation of the DevMine project consists of 7 sub-projects and
 several language parsers:
 
- * [crawld](../crawld): is responsible for collecting metadata about developers
+ * [crawld][crawld]: is responsible for collecting metadata about developers
    as well as cloning source code repositories.
  * language parsers: are responsible for parsing source code and producing an
    abstract representation of it, in JSON.
- * [srctool](../srctool): is a tool to manage language parsers. It can install
+ * [srctool][srctool]: is a tool to manage language parsers. It can install
    them and run them on source code.
- * [repotool](../repotool): aggregates source code repositories metadata from
+ * [repotool][repotool]: aggregates source code repositories metadata from
    version control systems (Git, Mercurial, ...) and produces and abstract
    representation of it, in JSON.
- * [srcanlzr](../srcanlzr): analyzes source code, from the abstract
+ * [srcanlzr][srcanlzr]: analyzes source code, from the abstract
    representation produced by the various language parsers.
- * [features](../features): computes _features_ from all of the collected
+ * [features][features]: computes _features_ from all of the collected
    metadata and stores them into the database.
- * [API-server](../api-server): serves all data produced by the tools mentioned
+ * [API-server][api-server]: serves all data produced by the tools mentioned
    above in a for of a JSON RESTful API.
- * [web interface](../web): is a demo web interface that interacts with the
+ * [web interface][web]: is a demo web interface that interacts with the
    API-server.
+
+## Database schema
+
+The PostgreSQL database is used by [crawld][crawld], [features][features] and
+[api-server][api-server].
+
+![Database schema](/img/db-schema.png)
+
+[api-server]: /doc/api-server "api-server documentation"
+[crawld]: /doc/crawld "crawld documentation"
+[features]: /doc/features "features"
+[repotool]: /doc/repotool "repotool documentation"
+[srcanlzr]: /doc/srcanlzr "srcanlzr documentation"
+[srctool]: /doc/srctool "srctool documentation"
+[web]: /doc/web "web interface documentation"
