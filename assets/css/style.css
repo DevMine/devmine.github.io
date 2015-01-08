@@ -16,12 +16,12 @@ body {
 
 /* Set the fixed height of the footer here */
 #footer {
-  height: 60px;
+  height: 80px;
   background-color: #f5f5f5;
 }
 
 #wrap > .container {
-  padding: 60px 15px 0;
+  padding: 80px 15px 0;
 }
 .container .credit {
   margin: 20px 0;
@@ -41,19 +41,6 @@ body {
 .navbar-brand > img {
     display: inline !important;
 }
-.devmine-table {
-    border-collapse:separate;
-    border-spacing:1em;
-}
-
-.gh-avatar {
-    max-width: 100px;
-    border-radius: 500px;
-}
-
-.gh-media {
-    margin-top: 20px;
-}
 
 /* font-awesome icons with a link need to be black */
 a i {
@@ -63,7 +50,6 @@ a i {
 code {
   font-size: 80%;
 }
-
 
 #forkongithub {
   position: fixed;
@@ -125,4 +111,23 @@ code {
         -o-transform: rotate(45deg);
         box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     }
+}
+
+/* Custom css classes */
+.dm-grey {
+  color: #666666 !important;
+}
+
+.dm-table {
+  border-collapse:separate;
+  border-spacing:1em;
+}
+
+.dm-gh-avatar {
+  max-width: 80px !important;
+  border-radius: 500px !important;
+}
+
+.dm-gh-media {
+  margin-top: 20px !important;
 }
