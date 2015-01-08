@@ -3,9 +3,8 @@ layout: default
 title: doc/srctool
 permalink: /doc/srctool/
 ---
+<span class="pull-right">
+<a class="dm-grey" href="https://github.com/DevMine/srctool">View on GitHub <i class="fa fa-github"></i></a>
+</span>
 
-# Srctool
-
-`srtool` is a command line tool to manage source code parsers. It is able to
-download parsers from a web server, install them and run them.In short, it is a
-manager for source code parsers.
+{% remote_markdown https://raw.githubusercontent.com/DevMine/srctool/master/README.md %}
