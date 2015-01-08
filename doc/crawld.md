@@ -3,11 +3,8 @@ layout: default
 title: doc/crawld
 permalink: /doc/crawld/
 ---
+<span class="pull-right">
+<a class="dm-grey" href="https://github.com/DevMine/crawld">View on GitHub <i class="fa fa-github"></i></a>
+</span>
 
-# Crawld
-
-`crawld` is a data crawler and source code repository fetcher. It is able to
-crawl metadata about source code repositories and developers from websites such
-as [GitHub](https://github.com). All data is then stored into a database. Along
-with the metadata, it is able to clone repositories source code for further
-analysis.
+{% remote_markdown https://raw.githubusercontent.com/DevMine/crawld/master/README.md %}
