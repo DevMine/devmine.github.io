@@ -25,6 +25,15 @@
     margin-top: 20px;
 }
 
+/* font-awesome icons with a link need to be black */
+a i {
+  color: black;
+}
+
+code {
+  font-size: 80%;
+}
+
 #forkongithub a {
     background: #337ab7;
     color: #fff;
