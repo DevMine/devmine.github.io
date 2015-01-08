@@ -3,11 +3,8 @@ layout: default
 title: doc/API-server
 permalink: /doc/api-server/
 ---
+<span class="pull-right">
+<a class="dm-grey" href="https://github.com/DevMine/api-server">View on GitHub <i class="fa fa-github"></i></a>
+</span>
 
-# API server
-
-`devmine` is the API server. It provides a JSON RESTful API to provide
-information computed by various DevMine sub-projects. It is also able to answer
-queries to rank and filter developers according to some user queries. Say a user
-wants to find a good Go developer with some experience in Java and functional
-programming as well, `devmine` is able to provide an answer to that.
+{% remote_markdown https://raw.githubusercontent.com/DevMine/api-server/master/README.md %}
