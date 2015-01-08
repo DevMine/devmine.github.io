@@ -3,9 +3,8 @@ layout: default
 title: doc/repotool
 permalink: /doc/repotool/
 ---
+<span class="pull-right">
+<a class="dm-grey" href="https://github.com/DevMine/repotool">View on GitHub <i class="fa fa-github"></i></a>
+</span>
 
-# Repotool
-
-`repotool` is a command line tool that aggregates source code repositories
-metadata (such as VCS type, commits and so on) in order to add it to the JSON
-files produced by `srctool`.
+{% remote_markdown https://raw.githubusercontent.com/DevMine/repotool/master/README.md %}
