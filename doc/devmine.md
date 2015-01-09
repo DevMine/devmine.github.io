@@ -32,7 +32,7 @@ several language parsers:
  * [features][features]: computes _features_ from all of the collected
    metadata and stores them into the database.
  * [API-server][api-server]: serves all data produced by the tools mentioned
-   above in a for of a JSON RESTful API.
+   above in the form of a JSON RESTful API.
  * [web interface][web]: is a demo web interface that interacts with the
    API-server.
 
