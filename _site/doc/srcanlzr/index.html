@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>doc/srcanlzr</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  <meta name="author" content="Devmine team">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/lib/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/lib/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/assets/css/github-markdown.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="canonical" href="http://devmine.ch/doc/srcanlzr/">
+  <link rel="alternate" type="application/rss+xml" title="DevMine" href="http://devmine.ch/feed.xml" />
+
+  <script type="text/javascript" src="/lib/assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/assets/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="/assets/js/scripts.js"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><img src="/img/devmine-logo.png">&nbsp;DevMine</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/project/">Project</a>
+          </li>
+          <li>
+            <a href="/downloads/">Downloads</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation<strong class="caret"></strong></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/doc/devmine/">Devmine</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="/doc/crawld">Crawld</a>
+              </li>
+              <li>
+                <a href="/doc/srctool/">Srctool</a>
+              </li>
+              <li>
+                <a href="/doc/repotool/">Repotool</a>
+              </li>
+              <li>
+                <a href="/doc/srcanlzr/">Srcanlzr</a>
+              </li>
+              <li>
+                <a href="/doc/features/">Features</a>
+              </li>
+              <li>
+                <a href="/doc/api-server/">API-server</a>
+              </li>
+              <li>
+                <a href="/doc/web/">Devmine-web</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/about/">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</style><span id="forkongithub"><a href="https://github.com/DevMine">Fork me on GitHub</a></span>
+<!--  
+  <div class="wrapper">
+    <a class="site-title" href="/">DevMine</a>
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/doc/api-server/">doc/API-server</a>
+          
+        
+          
+          <a class="page-link" href="/doc/crawld/">doc/crawld</a>
+          
+        
+          
+          <a class="page-link" href="/doc/devmine/">doc/DevMine</a>
+          
+        
+          
+          <a class="page-link" href="/downloads/">Downloads</a>
+          
+        
+          
+          <a class="page-link" href="/doc/features/">doc/features</a>
+          
+        
+          
+        
+          
+          <a class="page-link" href="/index.html">DevMine</a>
+          
+        
+          
+        
+          
+          <a class="page-link" href="/project/">Project</a>
+          
+        
+          
+          <a class="page-link" href="/doc/repotool/">doc/repotool</a>
+          
+        
+          
+          <a class="page-link" href="/doc/srcanlzr/">doc/srcanlzr</a>
+          
+        
+          
+          <a class="page-link" href="/doc/srctool/">doc/srctool</a>
+          
+        
+          
+          <a class="page-link" href="/doc/web/">doc/web interface</a>
+          
+        
+      </div>
+  </div>
+-->
+</header>
+
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+      <div class="container markdown-body">
+        <p><span class="pull-right">
+<a class="dm-grey" href="https://github.com/DevMine/srcanlzr">View on GitHub <i class="fa fa-github"></i></a>
+</span></p>
+
+<h1 id="srcanlzr">srcanlzr</h1>
+<p><a href="https://travis-ci.org/DevMine/srcanlzr"><img src="https://travis-ci.org/DevMine/srcanlzr.png?branch=master" alt="Build Status" /></a>
+<a href="http://godoc.org/github.com/DevMine/srcanlzr"><img src="http://godoc.org/github.com/DevMine/srcanlzr?status.svg" alt="GoDoc" /></a>
+<a href="https://gowalker.org/github.com/DevMine/srcanlzr"><img src="http://img.shields.io/badge/doc-gowalker-blue.svg?style=flat" alt="GoWalker" /></a>
+<a href="http://gobuild.io/github.com/DevMine/srcanlzr"><img src="http://gobuild.io/badge/github.com/DevMine/srcanlzr/downloads.svg" alt="Gobuild Download" /></a></p>
+
+<p><code>srcanlzr</code> is a tool to analyze source code repositories.</p>
+
+<h2 id="installation">Installation</h2>
+
+<pre><code>go get github.com/DevMine/srcanlzr
+</code></pre>
+
+<h2 id="download">Download</h2>
+
+<p>You can also directly download a compiled version:</p>
+
+<p>http://gobuild.io/github.com/DevMine/srcanlzr</p>
+
+
+      </div>
+    </div>
+
+    <footer id="footer">
+  <div class="container">
+    <p>
+      Copyright &copy; 2014-2015 - The DevMine authors
+      <a href="https://github.com/orgs/DevMine/people"><i class="fa fa-github"></i></a>
+    </p>
+    <p>
+    <small>Last site update: 2015-01-09 15:37:23 +0100</small>
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+
+</html>
