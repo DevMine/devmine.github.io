@@ -87,15 +87,15 @@ code {
     bottom: 1px;
     top: auto;
 }
-@media screen and (min-width:1400px){
+@media screen and (min-width:1440px){
     #forkongithub {
         position: fixed;
         display: block;
         top: 0;
         right: 0;
-        width: 200px;
+        width: 150px;
         overflow: hidden;
-        height: 200px;
+        height: 150px;
         z-index: 9999;
     }
     #forkongithub a {
