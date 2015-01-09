@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevMine</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    <description>DevMine - An open source project to evaluate developers skills based on their open-source contributions.
 </description>
     <link>http://devmine.ch/</link>
     <atom:link href="http://devmine.ch/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 09 Jan 2015 16:02:20 +0100</pubDate>
-    <lastBuildDate>Fri, 09 Jan 2015 16:02:20 +0100</lastBuildDate>
+    <pubDate>Fri, 09 Jan 2015 16:28:27 +0100</pubDate>
+    <lastBuildDate>Fri, 09 Jan 2015 16:28:27 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
   </channel>
