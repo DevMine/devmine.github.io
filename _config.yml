@@ -18,4 +18,4 @@ kramdown:
 
 highlighter: rouge
 
-exclude: [Makefile]
+exclude: [Makefile, README.md]
