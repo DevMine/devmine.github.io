@@ -160,7 +160,531 @@
 <a class="dm-grey" href="https://github.com/DevMine/api-server">View on GitHub <i class="fa fa-github"></i></a>
 </span></p>
 
-<h1 id="api-server">API server</h1>
+<h1 id="api-server">API Server</h1>
+
+<p><code>api-server</code> is a JSON RESTful API server implemented in
+<a href="http://golang.org/">Go</a>.</p>
+
+<p>It serves data collected and processed by various DevMine projects
+(<a href="http://devmine.ch/doc/crawld/">crawld</a>,
+<a href="http://devmine.ch/doc/features/">features</a>, …).</p>
+
+<h2 id="api-documentation">API Documentation</h2>
+
+<h3 id="general-information">General Information</h3>
+
+<p>All data is sent and received as JSON.</p>
+
+<p>Timestamps use the ISO 8601 format:</p>
+
+<pre><code>YYYY-MM-DDThh:mm:ssTZD (eg 2015-01-09T14:19:47+01:00)
+</code></pre>
+
+<p>Blank fields are included as <code>null</code>.</p>
+
+<p>Only GET requests are answered.</p>
+
+<h4 id="client-errors">Client Errors</h4>
+
+<p>Sending invalid JSON will result in a <code>400 Bad Request</code> response:</p>
+
+<pre><code>GET /search/{"foo":1
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>{
+  "message": "invalid JSON input"
+}
+</code></pre>
+
+<p><code>400 Bad Request</code> response may be returned when sending valid JSON that the
+server does not know how to process. Example:</p>
+
+<pre><code>GET /search/{"foo":1}
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>{
+  "message": "non existing feature: foo"
+}
+</code></pre>
+
+<h4 id="common-parameters">Common Parameters</h4>
+
+<p>Parameters not specified as a segment in the path can be passed as an HTTP query
+string parameter.</p>
+
+<p>Requests that return multiple results limit to 30 items by default.
+However, up to 100 items can be returned by specifying the <code>?per_page</code>
+parameter. Example:</p>
+
+<pre><code>GET /users?per_page=42
+</code></pre>
+
+<p>Since not all resources are shown on a page, further items may be queried
+by specifying the <code>?since</code> parameter, which corresponds to an item ID:</p>
+
+<pre><code>GET /users?per_page=42&amp;since=3747
+</code></pre>
+
+<h3 id="version">Version</h3>
+
+<p>All requests receive the version 1 of the API. You can verify which version of
+the API the server is serving by visiting the route <code>/</code>:</p>
+
+<pre><code>GET /
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>{
+  "version": 1,
+  "doc_url": "http://devmine.ch/doc/api-server"
+}
+</code></pre>
+
+<h3 id="users">Users</h3>
+
+<p>Users related resources are served under the <code>/users</code> routes.</p>
+
+<h4 id="get-all-users">Get all users</h4>
+
+<p>The <code>/users</code> route provides a dump of all the users, sorted by user IDs.
+As the number of is results limited, you can specify from which user ID you
+would like to list the users with the <code>?since</code> parameter.</p>
+
+<pre><code>GET /users
+</code></pre>
+
+<h4 id="get-a-single-user">Get a single user</h4>
+
+<p>You can get a single user by querying the <code>/users/:username</code> route.</p>
+
+<pre><code>GET /users/Rolinh
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>{
+  "id": 38769,
+  "username": "Rolinh",
+  "name": "Robin Hahling",
+  "email": "robin.hahling@gw-computing.net",
+  "gh_user": {
+    "id": 38769,
+    "github_id": 1324157,
+    "login": "Rolinh",
+    "bio": null,
+    "blog": "http://projects.gw-computing.net",
+    "company": "HGdev",
+    "email": "robin.hahling@gw-computing.net",
+    "hireable": false,
+    "location": "Switzerland",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1324157?v=3",
+    "html_url": "https://github.com/Rolinh",
+    "followers_count": 8,
+    "following_count": 19,
+    "collaborators_count": null,
+    "created_at": "2012-01-12T09:37:19+01:00",
+    "updated_at": "2015-01-09T18:36:56+01:00",
+    "gh_organizations": [
+    {
+      "id": 2522,
+      "github_id": 6969061,
+      "login": "DevMine",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6969061?v=3",
+      "html_url": "https://github.com/DevMine",
+      "name": "DevMine",
+      "company": null,
+      "blog": "http://devmine.ch/",
+      "location": "Around the world",
+      "email": null,
+      "collaborators_count": null,
+      "created_at": "2014-03-16T22:07:05+01:00",
+      "updated_at": "2015-01-09T21:51:06+01:00"
+    }
+    ]
+  }
+}
+</code></pre>
+
+<h4 id="get-repositories-associated-to-a-user">Get repositories associated to a user</h4>
+
+<p>You can get the repositories associated to a user by querying the
+<code>/users/:username/repositories</code> route.</p>
+
+<pre><code>GET /users/Rolinh/repositories
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>[
+{
+  "id": 76947,
+  "name": "crawld",
+  "primary_language": "Go",
+  "clone_url": "https://github.com/DevMine/crawld.git",
+  "clone_path": "go/devmine/crawld",
+  "vcs": "git",
+  "gh_repository": {
+    "id": 76941,
+    "github_id": 28636035,
+    "full_name": "DevMine/crawld",
+    "description": "A data crawler and repository fetcher",
+    "homepage": "http://devmine.ch/doc/crawld/",
+    "fork": false,
+    "default_branch": "master",
+    "master_branch": null,
+    "html_url": "https://github.com/DevMine/crawld",
+    "forks_count": 0,
+    "open_issues_count": 1,
+    "stargazers_count": 0,
+    "subscribers_count": 3,
+    "watchers_count": 0,
+    "size_in_kb": 260,
+    "created_at": "2014-12-30T16:44:02+01:00",
+    "updated_at": "2015-01-09T18:37:41+01:00",
+    "pushed_at": "2015-01-09T16:57:28+01:00"
+  }
+}
+]
+</code></pre>
+
+<h4 id="get-features-scores-of-a-user">Get features scores of a user</h4>
+
+<p>You can get the features scores of a user by querying the
+<code>/users/:username/scores</code> route.</p>
+
+<pre><code>GET /users/Rolinh/scores
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>{
+  "contributions_count": 0.48484848484848486,
+  "followers_count": 0.02478026651545222,
+  "forks_avg": 0.27997405412506565,
+  "hireable": 1,
+  "stars_avg": 0.31201177610713027
+}
+</code></pre>
+
+<h3 id="repositories">Repositories</h3>
+
+<p>Repositories related resources are served under the <code>/repositories</code> routes.</p>
+
+<h5 id="get-all-repositories">Get all repositories</h5>
+
+<p>The <code>/repositories</code> route provides a dump of all the repositories, sorted by
+repositories IDs.
+As the number of results limited, you can specify from which repository ID you
+would like to list the repositories with the <code>?since</code> parameter.</p>
+
+<pre><code>GET /repositories
+</code></pre>
+
+<h4 id="get-repositories-by-name">Get repositories by name</h4>
+
+<p>You can get repositories by name using the <code>/repositories/:name</code> route.
+Note that several repositories may have the same name. Hence, a list of
+repositories is returned.</p>
+
+<pre><code>GET /repositories/crawld
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>[
+{
+  "id": 76947,
+  "name": "crawld",
+  "primary_language": "Go",
+  "clone_url": "https://github.com/DevMine/crawld.git",
+  "clone_path": "go/devmine/crawld",
+  "vcs": "git",
+  "gh_repository": {
+    "id": 76941,
+    "github_id": 28636035,
+    "full_name": "DevMine/crawld",
+    "description": "A data crawler and repository fetcher",
+    "homepage": "http://devmine.ch/doc/crawld/",
+    "fork": false,
+    "default_branch": "master",
+    "master_branch": null,
+    "html_url": "https://github.com/DevMine/crawld",
+    "forks_count": 0,
+    "open_issues_count": 1,
+    "stargazers_count": 0,
+    "subscribers_count": 3,
+    "watchers_count": 0,
+    "size_in_kb": 260,
+    "created_at": "2014-12-30T16:44:02+01:00",
+    "updated_at": "2015-01-09T18:37:41+01:00",
+    "pushed_at": "2015-01-09T16:57:28+01:00"
+  }
+}
+]
+</code></pre>
+
+<h3 id="features">Features</h3>
+
+<p>Features related resources are served under the <code>/features</code> routes.</p>
+
+<h5 id="get-all-features">Get all features</h5>
+
+<p>The <code>/features</code> route provides a dump of all the features, sorted by
+features IDs.
+As the number of results limited, you can specify from which feature ID you
+would like to list the features with the <code>?since</code> parameter.</p>
+
+<pre><code>GET /features
+</code></pre>
+
+<h4 id="get-features-by-feature-category">Get features by feature category</h4>
+
+<p>Features are classified into categories. You can get a dump of all features from
+a category using the <code>/features/by_category/:name</code> route.</p>
+
+<pre><code>GET /features/by_category/other
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>[
+{
+  "id": 13,
+  "name": "followers_count",
+  "category": "other",
+  "default_weight": 1
+},
+{
+  "id": 14,
+  "name": "hireable",
+  "category": "other",
+  "default_weight": 1
+},
+{
+  "id": 15,
+  "name": "stars_avg",
+  "category": "other",
+  "default_weight": 1
+},
+{
+  "id": 16,
+  "name": "contributions_count",
+  "category": "other",
+  "default_weight": 1
+},
+{
+  "id": 17,
+  "name": "forks_avg",
+  "category": "other",
+  "default_weight": 1
+}
+]
+</code></pre>
+
+<h4 id="get-users-scores-by-feature">Get users scores by feature</h4>
+
+<p>The <code>/features/:name/scores</code> route provides a list of users and scores for the
+given feature name.</p>
+
+<p>As the number of results limited, you can specify from which user ID you would
+like to list the results with the <code>?since</code> parameter.</p>
+
+<pre><code>GET /followers_count/scores
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>[
+{
+  "id": 234,
+  "username": "austinheap",
+  "score": 0.00022682166146867
+},
+{
+  "id": 235,
+  "username": "javierprovecho",
+  "score": 0.00056705415367168
+},
+{
+  "id": 236,
+  "username": "andlabs",
+  "score": 0.00306209242982705
+},
+{
+  "id": 237,
+  "username": "6a68",
+  "score": 0.0022682166146867
+}
+]
+</code></pre>
+
+<h3 id="search-queries">Search queries</h3>
+
+<p>Search queries can be done under the <code>/search/:query</code> route.</p>
+
+<p><code>query</code> is a JSON formatted input object of feature name with their weights.</p>
+
+<p>Example query:</p>
+
+<pre><code>GET /search/{"followers_count":1}
+</code></pre>
+
+<p>The results is a list of users with their ranks, sorted from higher ranked to
+lower ranked user according to the query.
+The search results is limited to the top 1000 ranked users.</p>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>[
+{
+  "id": 14819,
+  "username": "davebalmer",
+  "name": "Dave Balmer",
+  "email": "",
+  "gh_user": null,
+  "rank": 3.0136591317198063
+},
+{
+  "id": 14818,
+  "username": "cjihrig",
+  "name": "Colin Ihrig",
+  "email": "cjihrig@gmail.com",
+  "gh_user": null,
+  "rank": 3.0083855280906597
+},
+{
+  "id": 14826,
+  "username": "isaacs",
+  "name": "isaacs",
+  "email": "i@izs.me",
+  "gh_user": null,
+  "rank": 2.223639284824428
+},
+{
+  "id": 2290,
+  "username": "defunkt",
+  "name": "Chris Wanstrath",
+  "email": "chris@github.com",
+  "gh_user": null,
+  "rank": 2.145283513738025
+},
+{
+  "id": 1,
+  "username": "bfirsh",
+  "name": "Ben Firshman",
+  "email": "b@fir.sh",
+  "gh_user": null,
+  "rank": 2.1016145815961327
+},
+...
+]
+</code></pre>
+
+<h3 id="stats">Stats</h3>
+
+<p>Querying the <code>/stats</code> route provides some statistics about the items in the
+database.</p>
+
+<pre><code>GET /stats
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+
+<pre><code>{
+  "users_count": 38752,
+  "repositories_count": 76919,
+  "features_count": 5,
+  "gh_users_count": 38752,
+  "gh_organizations_count": 2490,
+  "gh_repositories_count": 76917
+}
+</code></pre>
+
+<h2 id="installation">Installation</h2>
+
+<p>To install the API server, run this command in a terminal, assuming
+<a href="http://golang.org/">Go</a> is installed:</p>
+
+<pre><code>go get github.com/DevMine/api-server
+</code></pre>
+
+<p>Or you can download a binary for your platform from the DevMine project’s
+<a href="http://devmine.ch/downloads">downloads page</a>.</p>
+
+<p>You also need to setup a <a href="http://www.postgresql.org/">PostgreSQL</a> database.
+And of course, you need to add some data into your database and compute the
+features (see <a href="http://devmine.ch/doc/crawld/">crawld</a>,
+<a href="http://devmine.ch/doc/features/">features</a> and other DevMine projects for
+this).</p>
+
+<p>Some matrix computation is done and it uses the
+<a href="http://www.netlib.org/blas/">BLAS</a> library so you need to have it installed on
+the server as well.</p>
+
+<h2 id="usage-and-configuration">Usage and configuration</h2>
+
+<p>Copy <code>devmine.conf.sample</code> to <code>devmine.conf</code> and edit it according to your
+needs. The configuration file has two sections:</p>
+
+<ul>
+  <li><strong>database</strong>: allows you to configure access to your PostgreSQL
+database.
+    <ul>
+      <li><strong>hostname</strong>: hostname of the machine.</li>
+      <li><strong>port</strong>: PostgreSQL port.</li>
+      <li><strong>username</strong>: PostgreSQL user that has access to the database.</li>
+      <li><strong>password</strong>: password of the database user.</li>
+      <li><strong>dbname</strong>: database name.</li>
+      <li><strong>ssl_mode</strong>: takes any of these 4 values: “disable”,
+“require”, “verify-ca”, “verify-null”. Refer to PostgreSQL
+<a href="http://www.postgresql.org/docs/9.4/static/libpq-ssl.html">documentation</a>
+for details.</li>
+    </ul>
+  </li>
+  <li><strong>server</strong>: allows you to configure the server parameters.
+    <ul>
+      <li><strong>hostname</strong>: server hostname.</li>
+      <li><strong>port</strong>: port on which to listen.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Once the configuration file has been adjusted, you are ready to run the API
+server (<code>devmine</code>).
+You need to specify the path to the configuration file with the help of the <code>-c</code>
+option. Example:</p>
+
+<pre><code>devmine -c devmine.conf
+</code></pre>
+
+<p>Some command line options are also available, mainly about logging options.</p>
+
+<h2 id="internals">Internals</h2>
+
+<h3 id="composition-function">Composition function</h3>
+
+<p>The composition function computes the final ranking of developers according to a
+given user query. For all features, it retrieves the corresponding pre-computed
+developer scores from the database, normalizes them by dividing each score by
+the maximum score for that very feature, and builds a big sparse matrix. In
+order to decrease the response time, this matrix is pre-computed when the API
+server is started. The default weights per feature are also fetched from the
+database and the weights are increased or decreased based on the user query. A
+column vector is then built from these weights. At this point, it is very
+important that the columns of the sparse matrix match the rows of the weights
+vector: it must have both, the same size and the same order. Finally, for
+computing the final developer rank, the composition function uses a  weighted
+sum model. To do so, it computes the dot product between the sparse matrix of
+scores and the weights vector.</p>
+
+<p>The scores matrix is loaded by functions from the <code>cache</code> package and the actual
+dot product between the scores matrix and the adjusted features weights vector
+is done in the <code>score</code> package.</p>
 
 
       </div>
@@ -173,7 +697,7 @@
       <a href="https://github.com/orgs/DevMine/people"><i class="fa fa-github"></i></a>
     </p>
     <p>
-    <small>Last site update: 2015-01-09 18:08:58 +0100</small>
+    <small>Last site update: 2015-01-10 23:15:42 +0100</small>
     </p>
   </div>
 </footer>
