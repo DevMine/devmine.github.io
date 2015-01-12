@@ -160,7 +160,98 @@
 <a class="dm-grey" href="https://github.com/DevMine/repotool">View on GitHub <i class="fa fa-github"></i></a>
 </span></p>
 
-<h1 id="repotool">repotool</h1>
+<h1 id="repotool---a-tool-to-aggregate-source-code-repositories-metadata">repotool - a tool to aggregate source code repositories metadata</h1>
+
+<p><code>repotool</code> is a command line tool that aggregates source code repositories
+metadata (such as VCS type, commits and so on) and produces JSON objects out of
+it.  It is also able to store repository information into a database.</p>
+
+<p>Currently, only <a href="http://git-scm.com/">git</a> is supported.</p>
+
+<p>Below is an example of the data produced:</p>
+
+<pre><code>{
+  "name": "crawld",
+  "vcs": "git",
+  "clone_url": "https://github.com/DevMine/crawld.git",
+  "clone_path": "/home/robin/Hacking/crawld",
+  "default_branch": "master",
+  "commits": [
+    {
+      "vcs_id": "ba79fdaf602df3330d34dc9f8c4e581e324dbc92",
+      "message": "doc: add missing package documentation\n",
+      "author": {
+        "name": "Kevin Gillieron",
+        "email": "kevin.gillieron@gw-computing.net"
+      },
+      "committer": {
+        "name": "Kevin Gillieron",
+        "email": "kevin.gillieron@gw-computing.net"
+      },
+      "author_date": "2015-01-05T17:14:42+01:00",
+      "commit_date": "2015-01-05T17:14:49+01:00",
+      "file_changed_count": 4,
+      "insertions_count": 6,
+      "deletions_count": 0
+    },
+    {
+      "vcs_id": "12ae97c091bb8cdeabf89026eefac428819aaed1",
+      "message": "crawlers/github: Add function to check a repository structure.\n\nSome fields of a repository structure are mandatory to us, namely:\n\n- ID\n- Name\n- Language\n- CloneURL\n- Owner (and Owner.Login)\n- Fork\n\nThese fields are required either because their related column in the\ndatabase does not allow NULL values or because they are required for\nfurther API calls. All other fields may be nil.\n",
+      "author": {
+        "name": "Robin Hahling",
+        "email": "robin.hahling@gw-computing.net"
+      },
+      "committer": {
+        "name": "Robin Hahling",
+        "email": "robin.hahling@gw-computing.net"
+      },
+      "author_date": "2015-01-05T16:32:49+01:00",
+      "commit_date": "2015-01-05T16:38:41+01:00",
+      "file_changed_count": 1,
+      "insertions_count": 83,
+      "deletions_count": 0
+    },
+    ...
+  ]
+}
+</code></pre>
+
+<h2 id="installation">Installation</h2>
+
+<p><code>repotool</code> depends on <a href="https://github.com/libgit2/git2go">git2go</a>, which is a
+<a href="http://golang.org/">Go</a> binding to <a href="https://libgit2.github.com/">libgit2</a>, a C
+library that implements <code>git</code> core methods.</p>
+
+<p><code>git2go</code> needs to be installed as described in their
+<a href="https://github.com/libgit2/git2go/blob/master/README.md#installing">README.md</a>
+in order to statically link <code>libgit2</code> to the <code>git2go</code> package.</p>
+
+<p>To install <code>repotool</code>, run this command in a terminal, assuming
+<a href="http://golang.org/">Go</a> is installed:</p>
+
+<pre><code>go get github.com/DevMine/repotool
+</code></pre>
+
+<p>Or you can download a binary for your platform from the DevMine project’s
+<a href="http://devmine.ch/downloads">downloads page</a>.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p><code>repotool</code> produces JSON, provided that you feed it with a path to a source code
+repository. By default, informative messages are outputted to <code>stderr</code> whereas
+JSON is outputted to <code>stdout</code>. Example usage:</p>
+
+<pre><code>repotool ~/Code/myawesomeproject &gt; myawesomeproject.json
+</code></pre>
+
+<p>To insert data into the PostgreSQL database, you need to provide a configuration
+file in argument. Simply copy <code>repotool.conf.sample</code> to <code>repotool.conf</code> and
+adjust database connection information. See this
+<a href="https://github.com/DevMine/repotool/blob/master/db/README.md">README.md</a> for
+more information about the database schema. Example usage:</p>
+
+<pre><code>repotool -json=false -db -c repotool.conf ~/Code/myawesomeproject
+</code></pre>
 
 
       </div>
@@ -173,7 +264,7 @@
       <a href="https://github.com/orgs/DevMine/people"><i class="fa fa-github"></i></a>
     </p>
     <p>
-    <small>Last site update: 2015-01-10 23:15:42 +0100</small>
+    <small>Last site update: 2015-01-12 17:24:18 +0100</small>
     </p>
   </div>
 </footer>
