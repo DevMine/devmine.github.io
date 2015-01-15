@@ -38,8 +38,8 @@ several language parsers:
 
 ## Database schema
 
-The PostgreSQL database is used by [crawld][crawld], [features][features] and
-[api-server][api-server].
+The PostgreSQL database is used by [crawld][crawld], [repotool][repotool],
+[features][features] and [api-server][api-server].
 
 ![Database schema](/img/db-schema.png)
 
