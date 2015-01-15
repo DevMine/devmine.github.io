@@ -29,7 +29,7 @@ several language parsers:
    representation of it, in JSON.
  * [srcanlzr][srcanlzr]: analyzes source code, from the abstract
    representation produced by the various language parsers.
- * [features][features]: computes _features_ from all of the collected
+ * [featscomp][featscomp]: computes _features_ from all of the collected
    metadata and stores them into the database.
  * [API-server][api-server]: serves all data produced by the tools mentioned
    above in the form of a JSON RESTful API.
@@ -39,13 +39,13 @@ several language parsers:
 ## Database schema
 
 The PostgreSQL database is used by [crawld][crawld], [repotool][repotool],
-[features][features] and [api-server][api-server].
+[featscomp][featscomp] and [api-server][api-server].
 
 ![Database schema](/img/db-schema.png)
 
 [api-server]: /doc/api-server "api-server documentation"
 [crawld]: /doc/crawld "crawld documentation"
-[features]: /doc/features "features"
+[featscomp]: /doc/featscomp "featscomp"
 [repotool]: /doc/repotool "repotool documentation"
 [srcanlzr]: /doc/srcanlzr "srcanlzr documentation"
 [srctool]: /doc/srctool "srctool documentation"
