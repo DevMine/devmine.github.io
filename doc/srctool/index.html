@@ -160,7 +160,126 @@
 <a class="dm-grey" href="https://github.com/DevMine/srctool">View on GitHub <i class="fa fa-github"></i></a>
 </span></p>
 
-<h1 id="srctool">srctool</h1>
+<h1 id="srctool-tool-to-manage-source-code-parsers">srctool: Tool to manage source code parsers</h1>
+<p><a href="https://travis-ci.org/DevMine/srctool"><img src="https://travis-ci.org/DevMine/srctool.png?branch=master" alt="Build Status" /></a>
+<a href="http://godoc.org/github.com/DevMine/srctool"><img src="http://godoc.org/github.com/DevMine/srctool?status.svg" alt="GoDoc" /></a>
+<a href="https://gowalker.org/github.com/DevMine/srctool"><img src="http://img.shields.io/badge/doc-gowalker-blue.svg?style=flat" alt="GoWalker" /></a>
+<a href="http://gobuild.io/github.com/DevMine/srctool"><img src="http://gobuild.io/badge/github.com/DevMine/srctool/downloads.svg" alt="Gobuild Download" /></a></p>
+
+<p><code>srctool</code> is a command line tool to manage source code parsers. It is able to
+download parsers from a web server, install them and run them. In short, it is a
+manager for source code parsers.</p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="install-from-source">Install from source</h3>
+
+<p>Assuming you have <a href="http://golang.org">Go</a> installed and your <code>$GOPATH</code> correctly set, you can
+simply issue the following command:</p>
+
+<pre><code>go get github.com/DevMine/srctool
+</code></pre>
+
+<p>Make sure that <code>$GOPATH/bin</code> is in the <code>$PATH</code>.</p>
+
+<h3 id="install-a-binary-version">Install a binary version</h3>
+
+<p>Binary for the latest version can be found <a href="http://devmine.ch/downloads/">here</a>.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>The command <code>srctool help</code> provides a short description of all available
+options.</p>
+
+<h3 id="setup">Setup</h3>
+
+<p>Before doing anything, you must first create a configuration file. To do
+so, issue:</p>
+
+<pre><code>srctool config
+</code></pre>
+
+<p>This will create a default configuration file located in
+<code>$XDG_CONFIG_HOME/srctool/srctool.conf</code></p>
+
+<p>If the <code>$XDG_CONFIG_HOME</code> environment variable is not set, it will use the
+<code>$HOME/.config</code> directory.</p>
+
+<p>By default, the download server URL is <code>http://dl.devmine.ch/parsers</code>. You can
+change this value with the <code>config</code> command:</p>
+
+<pre><code>srctool config --server-url "http://my-server.com"
+</code></pre>
+
+<h3 id="install-language-parsers">Install language parsers</h3>
+
+<p>The command <code>srctool list -r</code> lists all compatible parsers available on the
+download server. For installing them, just issue the following command:</p>
+
+<pre><code>srctool install [language]
+</code></pre>
+
+<h3 id="parse-projects">Parse projects</h3>
+
+<p>The main purpose of <code>srctool</code> is to parse source code. After installing at least
+one parser, issue the following command:</p>
+
+<pre><code>srctool parse [project path]
+</code></pre>
+
+<p>This will parse the whole project with each installed parser and merge all the
+output to produce a final JSON.</p>
+
+<h2 id="running-your-own-download-server">Running your own download server</h2>
+
+<p>Running your own download server requires nothing more than a HTTP server
+(nginx, apache, lighttpd, …). The only requirement is to keep the following
+structure for the files organization:</p>
+
+<pre><code>.
+├── MD5SUMS
+├── darwin
+│   └── amd64
+│       ├── parser-go.zip
+│       └── parser-java.zip
+├── dragonfly
+│   └── amd64
+│       ├── parser-go.zip
+│       └── parser-java.zip
+├── freebsd
+│   ├── 386
+│   │   ├── parser-go.zip
+│   │   └── parser-java.zip
+│   └── amd64
+│       ├── parser-go.zip
+│       └── parser-java.zip
+├── linux
+│   ├── 386
+│   │   ├── parser-go.zip
+│   │   └── parser-java.zip
+│   └── amd64
+│       ├── parser-go.zip
+│       └── parser-java.zip
+├── netbsd
+│   ├── 386
+│   │   ├── parser-go.zip
+│   │   └── parser-java.zip
+│   └── amd64
+│       ├── parser-go.zip
+│       └── parser-java.zip
+└── opendbsd
+    ├── 386
+    │   ├── parser-go.zip
+    │   └── parser-java.zip
+    └── amd64
+        ├── parser-go.zip
+        └── parser-java.zip
+</code></pre>
+
+<p>The folder <code>tools/</code> of the project contains several useful scripts for managing
+the MD5SUMS file, cross compiling the Go parser, etc. See
+<a href="https://github.com/DevMine/srctool/blob/master/tools/README.md">tools/README.md</a>
+for more information.</p>
 
 
       </div>
@@ -173,7 +292,7 @@
       <a href="https://github.com/orgs/DevMine/people"><i class="fa fa-github"></i></a>
     </p>
     <p>
-    <small>Last site update: 2015-01-15 12:31:38 +0100</small>
+    <small>Last site update: 2015-01-15 15:28:53 +0100</small>
     </p>
   </div>
 </footer>
