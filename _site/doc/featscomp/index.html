@@ -160,7 +160,61 @@
 <a class="dm-grey" href="https://github.com/DevMine/featscomp">View on GitHub <i class="fa fa-github"></i></a>
 </span></p>
 
-<h1 id="features-computation">Features computation</h1>
+<h1 id="featscomp-compute-devmine-features">featscomp: compute DevMine features</h1>
+
+<p><a href="https://travis-ci.org/DevMine/featscomp"><img src="https://travis-ci.org/DevMine/featscomp.png?branch=master" alt="Build Status" /></a>
+<a href="http://godoc.org/github.com/DevMine/featscomp"><img src="http://godoc.org/github.com/DevMine/featscomp?status.svg" alt="GoDoc" /></a>
+<a href="https://gowalker.org/github.com/DevMine/featscomp"><img src="http://img.shields.io/badge/doc-gowalker-blue.svg?style=flat" alt="GoWalker" /></a>
+<a href="http://gobuild.io/github.com/DevMine/featscomp"><img src="http://gobuild.io/badge/github.com/DevMine/featscomp/downloads.svg" alt="Gobuild Download" /></a></p>
+
+<p><code>featscomp</code> computes ‘features’, as defined by the DevMine project and inserts
+them into the database.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>To install <code>featscomp</code>, run this command in a terminal, assuming
+<a href="http://golang.org/">Go</a> is installed:</p>
+
+<pre><code>go get github.com/DevMine/featscomp
+</code></pre>
+
+<p>Or you can download a binary for your platform from the DevMine project’s
+<a href="http://devmine.ch/downloads">downloads page</a>.</p>
+
+<p>You also need to setup a <a href="http://www.postgresql.org/">PostgreSQL</a> database. Look
+at the
+<a href="https://github.com/DevMine/featscomp/blob/master/db/README.md">README file</a>
+in the <code>db</code> sub-folder for details.</p>
+
+<h2 id="usage-and-configuration">Usage and configuration</h2>
+
+<p>Copy <code>featscomp.conf.sample</code> to <code>featscomp.conf</code> and edit it according to you
+needs. It has two sections, one to configure access to the database, the other
+to specify which feature you would like to compute:</p>
+
+<ul>
+  <li><strong>database</strong>: allows you to configure access to your PostgreSQL
+database.
+    <ul>
+      <li><strong>hostname</strong>: hostname of the machine.</li>
+      <li><strong>port</strong>: PostgreSQL port.</li>
+      <li><strong>username</strong>: PostgreSQL user that has access to the database.</li>
+      <li><strong>password</strong>: password of the database user.</li>
+      <li><strong>dbname</strong>: database name.</li>
+      <li><strong>ssl_mode</strong>: takes any of these 4 values: “disable”,
+“require”, “verify-ca”, “verify-null”. Refer to PostgreSQL
+<a href="http://www.postgresql.org/docs/9.4/static/libpq-ssl.html">documentation</a>
+for details.</li>
+    </ul>
+  </li>
+  <li><strong>features</strong>: allows you to specify which feature to compute.</li>
+</ul>
+
+<p>Once configuring is done, simply run <code>featscomp</code> and give it a configuration
+file as argument:</p>
+
+<pre><code>featscomp featscomp.conf
+</code></pre>
 
 
       </div>
@@ -173,7 +227,7 @@
       <a href="https://github.com/orgs/DevMine/people"><i class="fa fa-github"></i></a>
     </p>
     <p>
-    <small>Last site update: 2015-01-15 15:28:53 +0100</small>
+    <small>Last site update: 2015-01-16 14:57:36 +0100</small>
     </p>
   </div>
 </footer>
