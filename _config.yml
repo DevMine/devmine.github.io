@@ -3,7 +3,7 @@ title: DevMine
 owner: The DevMine authors
 email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
-    DevMine - An open source project to evaluate developers skills based on their open-source contributions.
+    DevMine - A developer search engine and source code analysis framework
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://devmine.ch" # the base hostname & protocol for your site
 github_username:  DevMine
