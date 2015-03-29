@@ -190,6 +190,30 @@ above in the form of a JSON RESTful API.</li>
 API-server.</li>
 </ul>
 
+<h2 id="source-analysis-toolchain-architecture">Source analysis toolchain architecture</h2>
+
+<p>The tools from the source  analysis toolchain work much like standard UNIX tools
+in the sense that, generally speaking:</p>
+
+<ul>
+  <li>One tool does one thing.</li>
+  <li>JSON input and output of the tools are pipeable to each another.</li>
+</ul>
+
+<p>A schema is probably better at explaining that so here is one:</p>
+
+<p><img src="/img/source-analysis-toolchain-archi-schema.png" alt="Source analysis toolchain architecture schema" /></p>
+
+<p>From the schema, you can deduce that you may omit using some of the tools when
+running the analysis. However, using all of the tools leads to the most complete
+source analysis API output.</p>
+
+<p>Out of the source analysis API output, we are able to compute features with
+<code>featscomp</code> and insert the results into the database. However, <code>srcanlzr</code> does a
+good job at providing part of the features since it computes things such as the
+cyclomatic complexity (McCabe) over the source code or counts the lines of code
+for each projects for instance.</p>
+
 <h2 id="database-schema">Database schema</h2>
 
 <p>The PostgreSQL database is used by <a href="/doc/crawld" title="crawld documentation">crawld</a>, <a href="/doc/repotool" title="repotool documentation">repotool</a>,
@@ -209,7 +233,7 @@ API-server.</li>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-03-29 09:50:15 +0200</small>
+    <small>Last site update: 2015-03-29 12:43:50 +0200</small>
     </p>
   </div>
 </footer>
