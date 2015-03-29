@@ -36,6 +36,28 @@ several language parsers:
  * [web interface][web]: is a demo web interface that interacts with the
    API-server.
 
+## Source analysis toolchain architecture
+
+The tools from the source  analysis toolchain work much like standard UNIX tools
+in the sense that, generally speaking:
+
+  * One tool does one thing.
+  * JSON input and output of the tools are pipeable to each another.
+
+A schema is probably better at explaining that so here is one:
+
+![Source analysis toolchain architecture schema](/img/source-analysis-toolchain-archi-schema.png)
+
+From the schema, you can deduce that you may omit using some of the tools when
+running the analysis. However, using all of the tools leads to the most complete
+source analysis API output.
+
+Out of the source analysis API output, we are able to compute features with
+`featscomp` and insert the results into the database. However, `srcanlzr` does a
+good job at providing part of the features since it computes things such as the
+cyclomatic complexity (McCabe) over the source code or counts the lines of code
+for each projects for instance.
+
 ## Database schema
 
 The PostgreSQL database is used by [crawld][crawld], [repotool][repotool],
