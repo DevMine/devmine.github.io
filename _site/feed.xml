@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevMine</title>
-    <description>DevMine - An open source project to evaluate developers skills based on their open-source contributions.
+    <description>DevMine - A developer search engine and source code analysis framework
 </description>
     <link>http://devmine.ch/</link>
     <atom:link href="http://devmine.ch/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 15 Feb 2015 15:40:00 +0100</pubDate>
-    <lastBuildDate>Sun, 15 Feb 2015 15:40:00 +0100</lastBuildDate>
+    <pubDate>Sun, 29 Mar 2015 09:50:15 +0200</pubDate>
+    <lastBuildDate>Sun, 29 Mar 2015 09:50:15 +0200</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
   </channel>
