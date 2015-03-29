@@ -174,12 +174,14 @@ written in <a href="https://www.python.org/">Python</a> but all of this code bas
 obsolete. DevMine uses <a href="http://www.postgresql.org/">PostgreSQL</a> as its database
 system and this component is essential to glue all sub-projects together.</p>
 
-<p>Current implementation of the DevMine project consists of 7 sub-projects and
+<p>Current implementation of the DevMine project consists of 8 sub-projects and
 several language parsers:</p>
 
 <ul>
   <li><a href="/doc/crawld" title="crawld documentation">crawld</a>: is responsible for collecting metadata about developers
 as well as cloning source code repositories.</li>
+  <li><a href="/doc/ght2dm" title="ght2dm documentation">ght2dm</a>: is a tool to import GHTorrent project BSON dumps into the
+DevMine database.</li>
   <li>language parsers: are responsible for parsing source code and producing an
 abstract representation of it, in JSON.</li>
   <li><a href="/doc/srctool" title="srctool documentation">srctool</a>: is a tool to manage language parsers. It can install
@@ -189,7 +191,7 @@ version control systems (Git, Mercurial, …) and produces and abstract
 representation of it, in JSON.</li>
   <li><a href="/doc/srcanlzr" title="srcanlzr documentation">srcanlzr</a>: analyzes source code, from the abstract
 representation produced by the various language parsers.</li>
-  <li><a href="/doc/featscomp" title="featscomp">featscomp</a>: computes <em>features</em> from all of the collected
+  <li><a href="/doc/featscomp" title="featscomp documentation">featscomp</a>: computes <em>features</em> from all of the collected
 metadata and stores them into the database.</li>
   <li><a href="/doc/api-server" title="api-server documentation">API-server</a>: serves all data produced by the tools mentioned
 above in the form of a JSON RESTful API.</li>
@@ -224,7 +226,7 @@ for each projects for instance.</p>
 <h2 id="database-schema">Database schema</h2>
 
 <p>The PostgreSQL database is used by <a href="/doc/crawld" title="crawld documentation">crawld</a>, <a href="/doc/repotool" title="repotool documentation">repotool</a>,
-<a href="/doc/featscomp" title="featscomp">featscomp</a> and <a href="/doc/api-server" title="api-server documentation">api-server</a>.</p>
+<a href="/doc/featscomp" title="featscomp documentation">featscomp</a> and <a href="/doc/api-server" title="api-server documentation">api-server</a>.</p>
 
 <p><img src="/img/db-schema.png" alt="Database schema" /></p>
 
@@ -240,7 +242,7 @@ for each projects for instance.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-03-29 13:34:06 +0200</small>
+    <small>Last site update: 2015-03-29 23:01:36 +0200</small>
     </p>
   </div>
 </footer>
