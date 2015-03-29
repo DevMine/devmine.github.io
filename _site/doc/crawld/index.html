@@ -425,6 +425,18 @@ and whether to disable the data crawlers or repositories fetcher (by default,
 the crawlers and the fetcher run in parallel). See <code>crawld -h</code> for more
 information.</p>
 
+<h2 id="internals">Internals</h2>
+
+<p><code>crawld</code> consists of two main parts internally: the crawlers (only GitHub for
+now) and the repositories fetcher (which only supports git for now).</p>
+
+<p>The metadata crawled are put into the database whereas the repositories are
+cloned on physical storage.</p>
+
+<p>Note that the internal architecture of <code>crawld</code> has been thought to make it easy
+to implement new crawlers or VCS backends.</p>
+
+<p><img src="/img/crawld-internals.png" alt="crawld internals" /></p>
 
       </div>
     </div>
@@ -437,7 +449,7 @@ information.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-03-29 13:06:00 +0200</small>
+    <small>Last site update: 2015-03-29 13:34:06 +0200</small>
     </p>
   </div>
 </footer>
