@@ -15,11 +15,13 @@ written in [Python](https://www.python.org/) but all of this code base is now
 obsolete. DevMine uses [PostgreSQL](http://www.postgresql.org/) as its database
 system and this component is essential to glue all sub-projects together.
 
-Current implementation of the DevMine project consists of 7 sub-projects and
+Current implementation of the DevMine project consists of 8 sub-projects and
 several language parsers:
 
  * [crawld][crawld]: is responsible for collecting metadata about developers
    as well as cloning source code repositories.
+ * [ght2dm][ght2dm]: is a tool to import GHTorrent project BSON dumps into the
+   DevMine database.
  * language parsers: are responsible for parsing source code and producing an
    abstract representation of it, in JSON.
  * [srctool][srctool]: is a tool to manage language parsers. It can install
@@ -67,7 +69,8 @@ The PostgreSQL database is used by [crawld][crawld], [repotool][repotool],
 
 [api-server]: /doc/api-server "api-server documentation"
 [crawld]: /doc/crawld "crawld documentation"
-[featscomp]: /doc/featscomp "featscomp"
+[ght2dm]: /doc/ght2dm "ght2dm documentation"
+[featscomp]: /doc/featscomp "featscomp documentation"
 [repotool]: /doc/repotool "repotool documentation"
 [srcanlzr]: /doc/srcanlzr "srcanlzr documentation"
 [srctool]: /doc/srctool "srctool documentation"
