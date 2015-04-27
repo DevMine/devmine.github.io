@@ -6,41 +6,50 @@ permalink: /project/
 
 # The DevMine project
 
-The DevMine project is about creating a database of developers and establishing
-developers profiles based on their open source code contributions. This database
-of developers may then be used to offer a service allowing people, typically
-recruiters from companies, to search for developers with a specific set of
-skills. The developers in the results are ranked by best match based on the user
-query.
+## What it is about
 
-Several things are considered to evaluate developers skills. The DevMine project
-calls them _features_. Some of them are used to filter results, others are used
-to differentiate developers from each another.
+DevMine is a project born at [EPFL](http://information.epfl.ch/introduction)
+with ultimate goals of providing a developer search engine and a source code
+analysis framework.
 
-For instance, you may want to hire a developer that knows about Java. DevMine
-will look at all developers that have code contributions in Java. But of course,
-this represents a lot of developers. So they are sorted according to several
-criteria in order to provide good results. These criteria are not only based
-on, for instance, the number of lines that a developer committed in that
-language because this does not tell us anything about the quality of the
-contributions.  So instead, DevMine will analyze the quality of the contributed
-source code using several metrics such as cyclomatic complexity. Some developers
-are also widely recognized as being behind some popular open source projects.
-This can be measured as, for instance, their popularity on
-[GitHub](https://github.com/) based on their number of followers and average
-number of _stars_ per repository owned among other metrics.
+How are these goals related you may ask? Well, if you are looking for a
+developer, you mostly likely want to find one with abilities that correspond to
+your requirements and who does not produce loads of spaghetti code.
 
-But maybe you do not care about a specific programming language. Instead, you
-want to hire someone that knows about, say, functional programming. Then a user
-that has many source code contributions in Haskell and Lisp programming
-languages is probably a good candidate.
+So this means that for the developer search engine to be good, it needs not only
+to analyze things like in which programming languages a developer has
+contributions but also evaluate the quality of them. This is why there is a
+source code analysis framework and how it relates to the search engine.
 
-Of course, other things that make a good developer do not concern programming
-abilities directly. For instance, single word commit messages may indicate that
-the developer is not very conscientious about documenting what he does. Also,
-the amount of comments in the source code, such as function comments, indicates
-how much he cares about explaining what he writes does.
+## How it works
 
-Does this project sound interesting? Well, we do not have reach a final stage
-yet but we are confident that we will. And best of all, all of this project is
-open source so you can contribute in order to improve it.
+First, data needs to be collected. This might seem to be an easy to solve
+problem but it is not once you deal with a lot of data.
+DevMine collects metadata from platforms such as [GitHub](https://github.com/)
+but it also downloads source code from projects.
+
+Once data has been collected, a source code analysis is run. This is where
+things get complicated since doing a source code analysis on one project is
+already something not trivial but doing it on millions of projects is even more
+challenging. The purpose of the analysis is to compute relevant metrics that
+will be available at a later stage to compute so called 'features'.
+
+Then there is the features computation stage. Features are used to evaluate
+things like coding proficiency using a specific programming paradigm, quality of
+contributions to an open source project and so on. These features are used to
+rank all developers according to a user query so the one that fits the best the
+query terms with the best expertise comes first.
+
+Finally, all of this would be useless if the data is not served. This is why
+there is a JSON RESTful API server which is used as the back-end to serve data
+for a front-end application where users are actually able to issue queries.
+
+## Sounds cool, can I try it?
+
+Well, unfortunately, not yet. The DevMine project has seen research and
+development for over a year now but is not ready for prime time yet even
+though we are starting to see encouraging results.
+
+## Who is behind the project?
+
+A group of student from EPFL. See [about page](/about/) for more information.
