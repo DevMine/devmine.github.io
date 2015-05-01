@@ -1,7 +1,7 @@
 # Site settings
 title: DevMine
 owner: The DevMine authors
-email: your-email@domain.com
+email: contact@devmine.ch
 description: > # this means to ignore newlines until "baseurl:"
     DevMine - A developer search engine and source code analysis framework
 baseurl: "" # the subpath of your site, e.g. /blog/
@@ -17,3 +17,13 @@ kramdown:
 highlighter: rouge
 
 exclude: [Makefile, README.md]
+
+permalink: /news/:year/:month/:day/:title/
+
+defaults:
+  -
+    scope:
+        path: ""
+        type: "posts"
+    values:
+        layout: "post"
