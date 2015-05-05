@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>doc/srcanlzr</title>
+  <title>doc/parsers</title>
   <meta name="description" content="DevMine - A developer search engine and source code analysis framework
 ">
   <meta name="author" content="Devmine team">
@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/lib/assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="/lib/assets/css/github-markdown.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="canonical" href="http://devmine.ch/doc/srcanlzr/">
+  <link rel="canonical" href="http://devmine.ch/doc/parsers/">
   <link rel="alternate" type="application/rss+xml" title="DevMine" href="http://devmine.ch/feed.xml" />
 
   <script type="text/javascript" src="/lib/assets/js/jquery.min.js"></script>
@@ -105,26 +105,26 @@
     <div id="wrap">
       <div class="container markdown-body">
         <p><span class="pull-right">
-<a class="dm-grey" href="https://github.com/DevMine/srcanlzr">View on GitHub <i class="fa fa-github"></i></a>
+<a class="dm-grey" href="https://github.com/DevMine/parsers">View on GitHub <i class="fa fa-github"></i></a>
 </span></p>
 
-<h1 id="srcanlzr">srcanlzr</h1>
-<p><a href="https://travis-ci.org/DevMine/srcanlzr"><img src="https://travis-ci.org/DevMine/srcanlzr.png?branch=master" alt="Build Status" /></a>
-<a href="http://godoc.org/github.com/DevMine/srcanlzr"><img src="http://godoc.org/github.com/DevMine/srcanlzr?status.svg" alt="GoDoc" /></a>
-<a href="https://gowalker.org/github.com/DevMine/srcanlzr"><img src="http://img.shields.io/badge/doc-gowalker-blue.svg?style=flat" alt="GoWalker" /></a></p>
+<h1 id="parsers">Parsers</h1>
 
-<p><code>srcanlzr</code> is a tool to analyze source code repositories.</p>
+<p>DevMine parsers are meant to parse source code repositories and produce an
+extended custom abstract syntax tree as JSON, as defined by
+<a href="http://devmine.ch/doc/srcanlzr/">srcanlzr</a>.</p>
+
+<p>Each parser is required to be able to read either directly from a folder
+containing the source code as text files or directly from a tar archive.</p>
+
+<p>The output of the languages parsers can be redirected to <code>srcanlzr</code> or
+<a href="http://devmine.ch/doc/repotool/">repotool</a> for further processing.</p>
 
 <h2 id="installation">Installation</h2>
 
-<pre><code>go get github.com/DevMine/srcanlzr
-</code></pre>
-
-<h2 id="download">Download</h2>
-
-<p>You can also directly download a compiled version:</p>
-
-<p>http://gobuild.io/github.com/DevMine/srcanlzr</p>
+<p>Each of the language parser can be installed using
+<a href="http://devmine.ch/doc/srctool/">srctool</a> with the <code>install</code> command.
+See <code>srctool help</code> for more details.</p>
 
 
       </div>

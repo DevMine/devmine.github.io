@@ -66,6 +66,9 @@
                 <a href="/doc/ght2dm">Ght2dm</a>
               </li>
               <li>
+                <a href="/doc/parsers">Parsers</a>
+              </li>
+              <li>
                 <a href="/doc/srctool/">Srctool</a>
               </li>
               <li>
@@ -94,74 +97,7 @@
       </div>
     </div>
   </nav>
-
 </style><span id="forkongithub"><a href="https://github.com/DevMine">Fork me on GitHub</a></span>
-<!--  
-  <div class="wrapper">
-    <a class="site-title" href="/">DevMine</a>
-      <div class="trigger">
-        
-          
-          <a class="page-link" href="/about/">About</a>
-          
-        
-          
-          <a class="page-link" href="/doc/api-server/">doc/API-server</a>
-          
-        
-          
-          <a class="page-link" href="/doc/crawld/">doc/crawld</a>
-          
-        
-          
-          <a class="page-link" href="/doc/devmine/">doc/DevMine</a>
-          
-        
-          
-          <a class="page-link" href="/downloads/">Downloads</a>
-          
-        
-          
-          <a class="page-link" href="/doc/featscomp/">doc/featscomp</a>
-          
-        
-          
-        
-          
-          <a class="page-link" href="/doc/ght2dm/">doc/ght2dm</a>
-          
-        
-          
-          <a class="page-link" href="/index.html">DevMine</a>
-          
-        
-          
-          <a class="page-link" href="/news/">News</a>
-          
-        
-          
-          <a class="page-link" href="/project/">Project</a>
-          
-        
-          
-          <a class="page-link" href="/doc/repotool/">doc/repotool</a>
-          
-        
-          
-          <a class="page-link" href="/doc/srcanlzr/">doc/srcanlzr</a>
-          
-        
-          
-          <a class="page-link" href="/doc/srctool/">doc/srctool</a>
-          
-        
-          
-          <a class="page-link" href="/doc/webapp/">doc/webapp</a>
-          
-        
-      </div>
-  </div>
--->
 </header>
 
 
@@ -708,28 +644,6 @@ scores and the weights vector.</p>
 dot product between the scores matrix and the adjusted features weights vector
 is done in the <code>score</code> package.</p>
 
-<h2 id="internals-1">Internals</h2>
-
-<h3 id="composition-function-1">Composition function</h3>
-
-<p>The composition function computes the final ranking of developers according to a
-given user query. For all features, it retrieves the corresponding pre-computed
-developer scores from the database, normalizes them by dividing each score by
-the maximum score for that very feature, and builds a big sparse matrix. In
-order to decrease the response time, this matrix is pre-computed when the API
-server is started. The default weights per feature are also fetched from the
-database and the weights are increased or decreased based on the user query. A
-column vector is then built from these weights. At this point, it is very
-important that the columns of the sparse matrix match the rows of the weights
-vector: it must have both, the same size and the same order. Finally, for
-computing the final developer rank, the composition function uses a  weighted
-sum model. To do so, it computes the dot product between the sparse matrix of
-scores and the weights vector.</p>
-
-<p>The scores matrix is loaded by functions from the <code>cache</code> package and the actual
-dot product between the scores matrix and the adjusted features weights vector
-is done in the <code>score</code> package.</p>
-
 <p>The figure below illustrates the process.</p>
 
 <p><img src="/img/api-server-queries-internals.png" alt="api-server-internals" /></p>
@@ -745,7 +659,7 @@ is done in the <code>score</code> package.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-05-02 16:40:36 +0200</small>
+    <small>Last site update: 2015-05-05 15:33:24 +0200</small>
     </p>
   </div>
 </footer>
