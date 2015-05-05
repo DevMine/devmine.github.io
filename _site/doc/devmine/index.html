@@ -115,15 +115,14 @@ written in <a href="https://www.python.org/">Python</a> but all of this code bas
 obsolete. DevMine uses <a href="http://www.postgresql.org/">PostgreSQL</a> as its database
 system and this component is essential to glue all sub-projects together.</p>
 
-<p>Current implementation of the DevMine project consists of 8 sub-projects and
-several language parsers:</p>
+<p>Current implementation of the DevMine project consists of 9 sub-projects:</p>
 
 <ul>
   <li><a href="/doc/crawld" title="crawld documentation">crawld</a>: is responsible for collecting metadata about developers
 as well as cloning source code repositories.</li>
   <li><a href="/doc/ght2dm" title="ght2dm documentation">ght2dm</a>: is a tool to import GHTorrent project BSON dumps into the
 DevMine database.</li>
-  <li>language parsers: are responsible for parsing source code and producing an
+  <li><a href="/doc/parsers" title="parsers documentation">parsers</a>: are responsible for parsing source code and producing an
 abstract representation of it, in JSON.</li>
   <li><a href="/doc/srctool" title="srctool documentation">srctool</a>: is a tool to manage language parsers. It can install
 them and run them on source code.</li>
@@ -136,7 +135,7 @@ representation produced by the various language parsers.</li>
 metadata and stores them into the database.</li>
   <li><a href="/doc/api-server" title="api-server documentation">API-server</a>: serves all data produced by the tools mentioned
 above in the form of a JSON RESTful API.</li>
-  <li><a href="/doc/web" title="web interface documentation">web interface</a>: is a demo web interface that interacts with the
+  <li><a href="/doc/webapp" title="webapp documentation">webapp</a>: is a demo web interface that interacts with the
 API-server.</li>
 </ul>
 
@@ -183,7 +182,7 @@ for each projects for instance.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-05-05 15:33:24 +0200</small>
+    <small>Last site update: 2015-05-05 15:43:08 +0200</small>
     </p>
   </div>
 </footer>
