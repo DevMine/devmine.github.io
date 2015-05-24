@@ -114,24 +114,27 @@
 <a href="http://godoc.org/github.com/DevMine/crawld"><img src="http://godoc.org/github.com/DevMine/crawld?status.svg" alt="GoDoc" /></a>
 <a href="https://gowalker.org/github.com/DevMine/crawld"><img src="http://img.shields.io/badge/doc-gowalker-blue.svg?style=flat" alt="GoWalker" /></a></p>
 
-<p><code>crawld</code> is a data crawler and source code repository fetcher.</p>
+<p><code>crawld</code> is a metadata crawler and source code repository fetcher.
+Hence, <code>crawld</code> comprises two different parts: the crawlers and the fetcher.</p>
 
-<p>Currently, only a <a href="https://github.com">GitHub</a> crawler is implemented but the
-architecture of <code>crawld</code> has been designed in a way such that new crawlers (for
-instance a <a href="https://bitbucket.org/">BitBucket</a> crawler) can be added without
-hassle, regardless of the source code management system
-(<a href="http://git-scm.com/">git</a>, <a href="http://mercurial.selenic.com/">mercurial</a>,
-<a href="http://subversion.apache.org/">svn</a>, …).</p>
+<h2 id="crawlers">Crawlers</h2>
 
-<p>This crawler focuses on crawling repositories metadata and those of the users
-that contributed, or are directly related, to the repositories.</p>
+<p><code>crawld</code> focuses on crawling repositories metadata and those of the users
+that contributed, or are directly related, to the repositories from code
+sharing platforms such as <a href="https://github.com">GitHub</a>.</p>
+
+<p>Only a GitHub crawler is currently implemented.
+However, the architecture of <code>crawld</code> has been designed in a way such that new
+crawlers (for instance a <a href="https://bitbucket.org/">BitBucket</a> crawler) can be
+added without hassle.</p>
 
 <p>All of the collected metadata is stored into a
 <a href="http://www.postgresql.org/">PostgreSQL</a> database. As <code>crawld</code> is designed to
-support several platforms, information common across them is stored in two
-tables: <code>users</code> and <code>repositories</code>. For the rest of the information, specific
-tables are created (<code>gh_repositories</code>, <code>gh_users</code> and <code>gh_organizations</code> for
-now) and relations are established with the <code>users</code> and <code>repositories</code> tables.</p>
+be able to crawl several code sharing platforms, common information is stored
+in two tables: <code>users</code> and <code>repositories</code>. For the rest of the information,
+specific tables are created (<code>gh_repositories</code>, <code>gh_users</code> and
+<code>gh_organizations</code> for now) and relations are established with the <code>users</code> and
+<code>repositories</code> tables.</p>
 
 <p>The table below gives information about what is collected. Bear in mind that
 some information might be incomplete (for instance, if a user does not provide
@@ -270,12 +273,27 @@ any company information).</p>
   </tbody>
 </table>
 
-<p>Besides crawling, <code>crawld</code> is also able to clone and update repositories, from
-their cloning URL stored into the database. Depending on the number of
-repositories you have in your database, this may required a fair amount of
-storage space.</p>
+<h2 id="fetcher">Fetcher</h2>
+
+<p>Aside from crawling metadata, <code>crawld</code> is able to clone and update
+repositories, using their clone URL stored into the database.</p>
+
+<p>Cloning and updating can be done regardless of the source code management
+system in use (<a href="http://git-scm.com/">git</a>,
+<a href="http://mercurial.selenic.com/">mercurial</a>,
+<a href="http://subversion.apache.org/">svn</a>, …), however only a <code>git</code> fetcher is
+currently implemented.</p>
+
+<p>As source code repositories usually contain a lot of files, <code>crawld</code> has an
+option that allows storing source code repositories as tar archives which makes
+things easier for the file system shall you clone a huge number of
+repositories.</p>
 
 <h2 id="installation">Installation</h2>
+
+<p><code>crawld</code> uses <code>git2go</code>, a <code>ligit2</code> Go binding for its <code>git</code> operations. Hence,
+<code>libgit2</code> needs to be installed on your system unless you statically compile it
+with the <code>git2go</code> package.</p>
 
 <p>To install <code>crawld</code>, run this command in a terminal, assuming
 <a href="http://golang.org/">Go</a> is installed:</p>
@@ -286,8 +304,9 @@ storage space.</p>
 <p>Or you can download a binary for your platform from the DevMine project’s
 <a href="http://devmine.ch/downloads">downloads page</a>.</p>
 
-<p>You also need to setup a <a href="http://www.postgresql.org/">PostgreSQL</a> database. Look
-at the <a href="https://github.com/DevMine/crawld/blob/master/db/README.md">README file</a>
+<p>You also need to setup a <a href="http://www.postgresql.org/">PostgreSQL</a> database.
+Look at the
+<a href="https://github.com/DevMine/crawld/blob/master/db/README.md">README file</a>
 in the <code>db</code> sub-folder for details.</p>
 
 <h2 id="usage-and-configuration">Usage and configuration</h2>
@@ -320,6 +339,16 @@ repositories cloning/updating periods. You shall preferably choose a
 small time period here since the repositories fetcher cannot usually
 keep up with the crawlers and you likely want it to update/clone the
 repositories continuously.</li>
+  <li><strong>fetch_languages</strong>: specify the list of languages the fetcher shall
+restrict to. If left empty, all languages are considered.</li>
+  <li><strong>tar_repositories</strong>: a boolean value indicating whether the repositories
+shall be stored as tar archives or not.</li>
+  <li><strong>max_fetcher_workers</strong>: specify the maximum number of workers to use for
+the fetching task. It defaults to 1 but if your machine has good I/O
+throughput and a good CPU, you probably want to increase this conservative
+value for performance reasons. Note that fetching is I/O and networked bound
+more than CPU bound and hence you probably do not want to increase this
+value too much.</li>
   <li><strong>crawlers</strong>: allows you to configure options for the crawlers.
     <ul>
       <li><strong>type</strong>: specify crawler type. Currently, only “github” is
@@ -390,7 +419,7 @@ to implement new crawlers or VCS backends.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-05-19 21:52:59 +0200</small>
+    <small>Last site update: 2015-05-24 13:48:36 +0200</small>
     </p>
   </div>
 </footer>

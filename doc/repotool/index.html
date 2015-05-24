@@ -238,14 +238,11 @@ touched by a commit. It may also contain patches if specified via an option.</p>
 
 <p><code>repotool</code> depends on <a href="https://github.com/libgit2/git2go">git2go</a>, which is a
 <a href="http://golang.org/">Go</a> binding to <a href="https://libgit2.github.com/">libgit2</a>, a C
-library that implements <code>git</code> core methods.</p>
+library that implements <code>git</code> core methods. Hence, you need <code>libgit2</code> installed
+on your system unless you statically compile <code>libgit2</code> into <code>git2go</code>.</p>
 
-<p><code>git2go</code> needs to be installed as described in their
-<a href="https://github.com/libgit2/git2go/blob/master/README.md#installing">README.md</a>
-in order to statically link <code>libgit2</code> to the <code>git2go</code> package.</p>
-
-<p>To install <code>repotool</code>, run this command in a terminal, assuming
-<a href="http://golang.org/">Go</a> is installed:</p>
+<p>If the requirements are met, installing <code>repotool</code> is as simple as running this
+command in a terminal (assuming <a href="http://golang.org/">Go</a> is installed):</p>
 
 <pre><code>go get github.com/DevMine/repotool
 </code></pre>
@@ -256,7 +253,8 @@ in order to statically link <code>libgit2</code> to the <code>git2go</code> pack
 <h2 id="usage">Usage</h2>
 
 <p><code>repotool</code> produces JSON, provided that you feed it with a path to a source code
-repository. By default, informative messages are outputted to <code>stderr</code> whereas
+repository managed by a VCS which can be either in the form of a directory or a
+tar archive. By default, informative messages are outputted to <code>stderr</code> whereas
 JSON is outputted to <code>stdout</code>. Example usage:</p>
 
 <pre><code>repotool ~/Code/myawesomeproject &gt; myawesomeproject.json
@@ -279,6 +277,12 @@ may rapidly produce a lot of data. Also note that if you plan on inserting data
 into a database, patches are not going to be inserted, whether you set
 <code>commit_patches</code> to <code>true</code> or not.</p>
 
+<p>As <code>libgit2</code> does not support reading information directly from a tar archive,
+when given a git repository as a tar archive, <code>repotool</code> will extract part of
+the archive into a temporary location. You can specify where using <code>tmp_dir</code>
+in the configuration file. We advise specifying a path to a ramdisk for
+increased performance and reduced main storage I/Os.</p>
+
 <p>If you plan on batch processing multiple repositories, see
 <a href="https://github.com/DevMine/devmine/blob/master/tools/batch-repotool.go">batch-repotool.go</a>.
 It can process repositories concurrently by recursively traversing directories
@@ -300,7 +304,7 @@ of goroutines as the number of cpu cores should be a reasonable choice.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-05-19 21:52:59 +0200</small>
+    <small>Last site update: 2015-05-24 13:48:36 +0200</small>
     </p>
   </div>
 </footer>
