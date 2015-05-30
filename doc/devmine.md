@@ -24,7 +24,8 @@ Current implementation of the DevMine project consists of 10 sub-projects:
  * [parsers][parsers]: are responsible for parsing source code and producing an
    abstract representation of it, in JSON.
  * [srccat][srccat]: can create large tar archives from source code repositories
-   to make then suitable for processing [Hadoop](http://hadoop.apache.org/).
+   to make them suitable for processing on [Hadoop](http://hadoop.apache.org/)
+   or [Spark](https://spark.apache.org/).
  * [srctool][srctool]: is a tool to manage language parsers. It can install
    them and run them on source code.
  * [repotool][repotool]: aggregates source code repositories metadata from
