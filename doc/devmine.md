@@ -15,7 +15,7 @@ written in [Python](https://www.python.org/) but all of this code base is now
 obsolete. DevMine uses [PostgreSQL](http://www.postgresql.org/) as its database
 system and this component is essential to glue all sub-projects together.
 
-Current implementation of the DevMine project consists of 9 sub-projects:
+Current implementation of the DevMine project consists of 10 sub-projects:
 
  * [crawld][crawld]: is responsible for collecting metadata about developers
    as well as cloning source code repositories.
@@ -23,6 +23,8 @@ Current implementation of the DevMine project consists of 9 sub-projects:
    DevMine database.
  * [parsers][parsers]: are responsible for parsing source code and producing an
    abstract representation of it, in JSON.
+ * [srccat][srccat]: can create large tar archives from source code repositories
+   to make then suitable for processing [Hadoop](http://hadoop.apache.org/).
  * [srctool][srctool]: is a tool to manage language parsers. It can install
    them and run them on source code.
  * [repotool][repotool]: aggregates source code repositories metadata from
@@ -71,6 +73,7 @@ The PostgreSQL database is used by [crawld][crawld], [repotool][repotool],
 [ght2dm]: /doc/ght2dm "ght2dm documentation"
 [featscomp]: /doc/featscomp "featscomp documentation"
 [parsers]: /doc/parsers "parsers documentation"
+[srccat]: /doc/srccat "srccat documentation"
 [repotool]: /doc/repotool "repotool documentation"
 [srcanlzr]: /doc/srcanlzr "srcanlzr documentation"
 [srctool]: /doc/srctool "srctool documentation"
