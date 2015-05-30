@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>doc/webapp</title>
+  <title>doc/srccat</title>
   <meta name="description" content="DevMine - A developer search engine and source code analysis framework
 ">
   <meta name="author" content="Devmine team">
@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/lib/assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="/lib/assets/css/github-markdown.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="canonical" href="http://devmine.ch/doc/webapp/">
+  <link rel="canonical" href="http://devmine.ch/doc/srccat/">
   <link rel="alternate" type="application/rss+xml" title="DevMine" href="http://devmine.ch/feed.xml" />
 
   <script type="text/javascript" src="/lib/assets/js/jquery.min.js"></script>
@@ -108,10 +108,40 @@
     <div id="wrap">
       <div class="container markdown-body">
         <p><span class="pull-right">
-<a class="dm-grey" href="https://github.com/DevMine/webapp">View on GitHub <i class="fa fa-github"></i></a>
+<a class="dm-grey" href="https://github.com/DevMine/srccat">View on GitHub <i class="fa fa-github"></i></a>
 </span></p>
 
-<h1 id="webapp">webapp</h1>
+<h1 id="srccat-concatenate-repositories-into-large-tar-archive">srccat: concatenate repositories into large tar archive</h1>
+
+<p><code>srccat</code> reads files from source code repositories, stored either in a folder or
+a tar archive, and concatenate them into large tar archives.</p>
+
+<p>This is especially useful for processing on
+<a href="http://hadoop.apache.org/">Hadoop</a> or <a href="https://spark.apache.org/">Spark</a>.</p>
+
+<p>The size of a block on Hadoop Distributed File System (HDFS) is at least 64MB.
+Hence, intensive jobs with Spark or Hadoop’s MapReduce, perform better if
+the small files are concatenated into more suitable larger ones.</p>
+
+<p><code>srccat</code> walks through the files of repositories and filters out all files
+that are not text or too large to be human readable code. It then creates
+tar archives of a size of at least 128MB with those files.
+All the files paths in the resulting tar archives are relative to <code>REPO_ROOT</code>.</p>
+
+<p><code>srccat</code> assumes the following directory structure, which is the one used by
+<a href="http://devmine.ch/doc/crawld/">crawld</a>:</p>
+
+<pre><code>REPO_ROOT
+└── Language Folder
+    └── Github User
+        └── Repository
+</code></pre>
+
+<h2 id="build--run">Build &amp; Run</h2>
+
+<pre><code>&gt; sbt assembly
+&gt; java -jar target/scala-2.11/srccat-assembly-1.0.jar [-j=&lt;numJobs&gt;] &lt;REPO_ROOT&gt; &lt;OUTPUT_FOLDER&gt;
+</code></pre>
 
 
       </div>

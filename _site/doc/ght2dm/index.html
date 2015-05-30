@@ -66,6 +66,9 @@
                 <a href="/doc/ght2dm">Ght2dm</a>
               </li>
               <li>
+                <a href="/doc/srccat">Srccat</a>
+              </li>
+              <li>
                 <a href="/doc/parsers">Parsers</a>
               </li>
               <li>
@@ -122,6 +125,12 @@ database with GHTorrent dumps.</p>
 </code></pre>
 
 <h2 id="usage">Usage</h2>
+
+<p><em>IMPORTANT:</em> Make sure to run the script <code>db/create_tmp_table.sql</code> before
+running <code>ght2dm</code>. The latter assumes that this table is created and empty. Make
+also sure to run the script <code>db/insert_from_tmp_tables.sql</code> after the execution
+of <code>ght2dm</code>. Note that these two scripts are only useful when importing
+<code>repositories</code>.</p>
 
 <p><code>ght2dm</code> usage is pretty simple: it only requires to pass a configuration file
 as argument:</p>
@@ -187,7 +196,7 @@ format <code>yyyy-mm-dd</code>. Files that does not respect this convention are 
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-05-24 13:48:36 +0200</small>
+    <small>Last site update: 2015-05-30 11:44:45 +0200</small>
     </p>
   </div>
 </footer>
