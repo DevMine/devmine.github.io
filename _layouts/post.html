@@ -12,4 +12,10 @@ layout: default
     {{ content }}
   </article>
 
+ <a href="{{ "/news/categories/" | prepend: site.baseurl }}"> Categories :</a>
+
+  {% for cat in page.categories %}
+    <a href="{{ cat | prepend: "/news/categories/" | prepend: site.baseurl }}">{{ cat }}</a>
+  {% endfor %}
+
 </div>
