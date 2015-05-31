@@ -27,3 +27,6 @@ defaults:
         type: "posts"
     values:
         layout: "post"
+
+# Possible categories for the news
+category-list: [announcement, technical, video]
