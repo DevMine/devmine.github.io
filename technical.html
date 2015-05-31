@@ -1,0 +1,21 @@
+---
+layout: default
+title: Videos
+permalink: /news/categories/technical/
+---
+
+<div class="home">
+    <h1 class="page-heading">Technical</h1>
+
+    <ul>
+        {% for post in site.categories.technical %}
+            <li>
+                <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+                <h2>
+                    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                </h2>
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
