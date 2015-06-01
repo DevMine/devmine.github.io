@@ -1,6 +1,7 @@
 ---
 title: writing a language parser
 categories: technical
+author: laurent
 ---
 
 To be able to analyze source code, the DevMine framework uses programming
