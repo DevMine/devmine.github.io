@@ -1,14 +1,14 @@
 ---
-title: Write a language parser
+title: writing a language parser
 categories: technical
 ---
 
 To be able to analyze source code, the DevMine framework uses programming
-language parsers that fill a [custom abstract syntax
+language parsers that produce a [custom abstract syntax
 tree](http://godoc.org/github.com/DevMine/srcanlzr/src)
-([AST](http://en.wikipedia.org/wiki/Abstract_syntax_tree)). This article will
-give you some leads on how to proceed if you want to write a language parser to
-add to the framework.
+([AST](http://en.wikipedia.org/wiki/Abstract_syntax_tree)). This article is
+giving you some leads on how to proceed if you want to write a language parser
+to add to the framework.
 
 The first thing you might want to do is to find a parser for the programming
 language you want to parse. From a high level point a view, the goal is to
