@@ -346,6 +346,13 @@ repositories continuously.</li>
 restrict to. If left empty, all languages are considered.</li>
   <li><strong>tar_repositories</strong>: a boolean value indicating whether the repositories
 shall be stored as tar archives or not.</li>
+  <li><strong>tmp_dir</strong>: specify a temporary working directory. If left empty, the
+default temporary directory will be used. This directory is used on clone and
+update operations when the <em>tar_repositories</em> option is activated. It is
+recommended to use a ramdisk for increased performance.</li>
+  <li><strong>tmp_dir_file_size_limit</strong>: specify the maximum size in GB of an object
+to be temporarily placed in <em>tmp_dir</em> for processing. Files of size larger
+than this value will not be processed in <em>tmp_dir</em>.</li>
   <li><strong>max_fetcher_workers</strong>: specify the maximum number of workers to use for
 the fetching task. It defaults to 1 but if your machine has good I/O
 throughput and a good CPU, you probably want to increase this conservative
@@ -431,7 +438,7 @@ to implement new crawlers or VCS backends.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-06-01 13:29:04 +0200</small>
+    <small>Last site update: 2015-06-02 20:33:09 +0200</small>
     </p>
   </div>
 </footer>
