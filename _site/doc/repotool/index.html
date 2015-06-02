@@ -284,7 +284,10 @@ into a database, patches are not going to be inserted, whether you set
 when given a git repository as a tar archive, <code>repotool</code> will extract part of
 the archive into a temporary location. You can specify where using <code>tmp_dir</code>
 in the configuration file. We advise specifying a path to a ramdisk for
-increased performance and reduced main storage I/Os.</p>
+increased performance and reduced main storage I/Os. When using a ramdisk with
+limited capacity, you shall specify the largest size for a tar archive to be
+extracted in <code>tmp_dir</code> using the <code>tmp_dir_file_size_limit</code> option. Every tar
+archive larger than this size will be extracted in its storage location instead.</p>
 
 <p>If you plan on batch processing multiple repositories, see
 <a href="https://github.com/DevMine/devmine/blob/master/tools/batch-repotool.go">batch-repotool.go</a>.
@@ -307,7 +310,7 @@ of goroutines as the number of cpu cores should be a reasonable choice.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-06-01 13:29:04 +0200</small>
+    <small>Last site update: 2015-06-02 20:33:09 +0200</small>
     </p>
   </div>
 </footer>
