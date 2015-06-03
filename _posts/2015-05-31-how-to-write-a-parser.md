@@ -21,10 +21,10 @@ The new parser shall output JSON to the standard output. All logs or error
 messages are expected to be written to the standard error output. This is the
 expected behavior that allows different tools of the framework to be used in
 chain via input/output piping. For instance, the output of the language parser
-can be piped as input to `srctool` which can then pipe its output into
-`srcanlzr`. Hence, for this to work, only JSON needs to be produced to the
-standard output. Even informative messages need to be sent to standard error
-output.
+can be piped as input to [`srctool`](http://devmine.ch/doc/srctool) which can
+then pipe its output into [`srcanlzr`](http://devmine.ch/doc/srcanlzr). Hence,
+for this to work, only JSON needs to be produced to the standard output. Even
+informative messages need to be sent to standard error output.
 
 JSON marshalling shall follow the syntactic rules of the
 [documentation](http://godoc.org/github.com/DevMine/srcanlzr/src) in order for
@@ -46,8 +46,9 @@ be the name of the repository.
 
 Furthermore, one of the attributes of the 'Project' structure is a list of
 language structures. The parser shall return a list of one element. It is
-`srcanlzr` which will take care of filling the languages list when merging
-different JSON objects from different parsers when appropriate.
+[`srcanlzr`](http://devmine.ch/doc/srcanlzr) which will take care of filling the
+languages list when merging different JSON objects from different parsers when
+appropriate.
 
 About the 'Package' structure, the 'name' attribute shall be the same as the
 name of the folder that contains source code files. For the specific case where
@@ -72,12 +73,12 @@ String code = new StringBuilder()
 
 The language parser will be run from the command line with a path as argument.
 This path either refers to a source code repository or to a tar archive of such
-a repository.Hence, it has to be able to handle both cases indifferently.
+a repository. Hence, it has to be able to handle both cases indifferently.
 
 As the name given to the 'Project' structure may come from the path given as
 argument when the parser is run, care should be taken not to use a dot when
 parsing the current directory for instance, as this would lead to a wrong
-result.  Absolute paths are preferred to relative ones. In the same vein, when
+result. Absolute paths are preferred to relative ones. In the same vein, when
 dealing with a tar archive of repository, the archive's name trimmed from its
 suffix shall be used.
 
