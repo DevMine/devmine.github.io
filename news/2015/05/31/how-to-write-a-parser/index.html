@@ -137,10 +137,10 @@ as long as they exist in the language you are working on.</p>
 messages are expected to be written to the standard error output. This is the
 expected behavior that allows different tools of the framework to be used in
 chain via input/output piping. For instance, the output of the language parser
-can be piped as input to <code>srctool</code> which can then pipe its output into
-<code>srcanlzr</code>. Hence, for this to work, only JSON needs to be produced to the
-standard output. Even informative messages need to be sent to standard error
-output.</p>
+can be piped as input to <a href="http://devmine.ch/doc/srctool"><code>srctool</code></a> which can
+then pipe its output into <a href="http://devmine.ch/doc/srcanlzr"><code>srcanlzr</code></a>. Hence,
+for this to work, only JSON needs to be produced to the standard output. Even
+informative messages need to be sent to standard error output.</p>
 
 <p>JSON marshalling shall follow the syntactic rules of the
 <a href="http://godoc.org/github.com/DevMine/srcanlzr/src">documentation</a> in order for
@@ -162,8 +162,9 @@ be the name of the repository.</p>
 
 <p>Furthermore, one of the attributes of the ‘Project’ structure is a list of
 language structures. The parser shall return a list of one element. It is
-<code>srcanlzr</code> which will take care of filling the languages list when merging
-different JSON objects from different parsers when appropriate.</p>
+<a href="http://devmine.ch/doc/srcanlzr"><code>srcanlzr</code></a> which will take care of filling the
+languages list when merging different JSON objects from different parsers when
+appropriate.</p>
 
 <p>About the ‘Package’ structure, the ‘name’ attribute shall be the same as the
 name of the folder that contains source code files. For the specific case where
@@ -187,12 +188,12 @@ following snippet have to be counted as <strong>1</strong> line.</p>
 
 <p>The language parser will be run from the command line with a path as argument.
 This path either refers to a source code repository or to a tar archive of such
-a repository.Hence, it has to be able to handle both cases indifferently.</p>
+a repository. Hence, it has to be able to handle both cases indifferently.</p>
 
 <p>As the name given to the ‘Project’ structure may come from the path given as
 argument when the parser is run, care should be taken not to use a dot when
 parsing the current directory for instance, as this would lead to a wrong
-result.  Absolute paths are preferred to relative ones. In the same vein, when
+result. Absolute paths are preferred to relative ones. In the same vein, when
 dealing with a tar archive of repository, the archive’s name trimmed from its
 suffix shall be used.</p>
 
@@ -223,7 +224,7 @@ doubt, and feel free to write us an email if you have any questions.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-06-03 20:32:01 +0200</small>
+    <small>Last site update: 2015-06-03 21:46:58 +0200</small>
     </p>
   </div>
 </footer>
