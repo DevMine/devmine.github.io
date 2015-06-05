@@ -8,7 +8,7 @@ layout: default
     {% assign author = site.data.authors[page.author] %}
     <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}
         {% if page.author %}
-        • By {{ author.name }}
+        • By <a href="{{ author.about }}">{{ author.name }}</a>
             {% if author.email %}
             - <a href="mailto:{{ author.email }}" target="_blank"><i class="fa fa-envelope-o"></i></a>
             {% endif %}

@@ -1,15 +1,18 @@
 # Author details
 robin:
     name: Robin Hahling
+    about: /about/#rolinh
     email: robin.hahling@gw-computing.net
     github: https://github.com/rolinh
     linkedin: https://www.linkedin.com/in/rhahling
     website: http://rolinh.ch/
 kevin:
     name: Kevin Gillieron
+    about: /about/#gilliek
     email: kevin.gillieron@gw-computing.net
     github: https://github.com/gilliek
 laurent:
     name: Laurent Weingart
+    about: /about/#lweingart
     email: laurent.weingart@epfl.ch
     github: https://github.com/lweingart
