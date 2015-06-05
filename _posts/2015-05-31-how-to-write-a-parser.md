@@ -1,5 +1,5 @@
 ---
-title: writing a language parser
+title: Writing a language parser
 categories: technical
 author: laurent
 ---
