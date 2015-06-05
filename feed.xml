@@ -6,27 +6,27 @@
 </description>
     <link>http://devmine.ch/</link>
     <atom:link href="http://devmine.ch/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 03 Jun 2015 21:46:58 +0200</pubDate>
-    <lastBuildDate>Wed, 03 Jun 2015 21:46:58 +0200</lastBuildDate>
+    <pubDate>Fri, 05 Jun 2015 14:09:54 +0200</pubDate>
+    <lastBuildDate>Fri, 05 Jun 2015 14:09:54 +0200</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>repotool presentation video</title>
         <description>&lt;p&gt;
     Here is a video that shows the most used features of
-    &lt;a href=&quot;http://devmine.ch/doc/repotool&quot;&gt;&lt;code&gt;repotool&lt;/code&gt;&lt;/a&gt;.
+    &lt;a href=&quot;/doc/repotool&quot;&gt;&lt;code&gt;repotool&lt;/code&gt;&lt;/a&gt;.
 &lt;/p&gt;
 &lt;p&gt;
-    &lt;a href=&quot;http://devmine.ch/doc/repotool&quot;&gt;&lt;code&gt;repotool&lt;/code&gt;&lt;/a&gt; is part
+    &lt;a href=&quot;/doc/repotool&quot;&gt;&lt;code&gt;repotool&lt;/code&gt;&lt;/a&gt; is part
     of the DevMine source code analysis framework. It is a command line tool
     that aggregates source code repositories metadata (such as VCS type, commits
     and so on). It can also be used in addition to the result produced by
-    &lt;a href=&quot;http://devmine.ch/doc/srctool&quot;&gt;&lt;code&gt;srctool&lt;/code&gt;&lt;/a&gt; and output
+    &lt;a href=&quot;/doc/srctool&quot;&gt;&lt;code&gt;srctool&lt;/code&gt;&lt;/a&gt; and output
     a combined JSON object.
 &lt;/p&gt;
 &lt;p&gt;
     The result may be used as input for the
-    &lt;a href=&quot;http://devmine.ch/doc/srcanlzr&quot;&gt;&lt;code&gt;srcanlzr&lt;/code&gt;&lt;/a&gt;
+    &lt;a href=&quot;/doc/srcanlzr&quot;&gt;&lt;code&gt;srcanlzr&lt;/code&gt;&lt;/a&gt;
     tool.
 &lt;/p&gt;
 &lt;iframe src=&quot;https://player.vimeo.com/video/129416052?color=337ab7&quot; width=&quot;800&quot; height=&quot;450&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
@@ -41,10 +41,10 @@
       </item>
     
       <item>
-        <title>writing a language parser</title>
+        <title>Writing a language parser</title>
         <description>&lt;p&gt;In order to analyze source code, the DevMine framework uses programming language
-parsers that produce a &lt;a href=&quot;http://godoc.org/github.com/DevMine/srcanlzr/src&quot;&gt;custom abstract syntax
-tree&lt;/a&gt;
+parsers that produce a
+&lt;a href=&quot;http://godoc.org/github.com/DevMine/srcanlzr/src&quot;&gt;custom abstract syntax tree&lt;/a&gt;
 (&lt;a href=&quot;http://en.wikipedia.org/wiki/Abstract_syntax_tree&quot;&gt;AST&lt;/a&gt;). This article talks
 about some of the steps that need to be taken in order to implement a language
 parser that is not yet available to the framework.&lt;/p&gt;
@@ -59,10 +59,10 @@ as long as they exist in the language you are working on.&lt;/p&gt;
 messages are expected to be written to the standard error output. This is the
 expected behavior that allows different tools of the framework to be used in
 chain via input/output piping. For instance, the output of the language parser
-can be piped as input to &lt;a href=&quot;http://devmine.ch/doc/srctool&quot;&gt;&lt;code&gt;srctool&lt;/code&gt;&lt;/a&gt; which can
-then pipe its output into &lt;a href=&quot;http://devmine.ch/doc/srcanlzr&quot;&gt;&lt;code&gt;srcanlzr&lt;/code&gt;&lt;/a&gt;. Hence,
-for this to work, only JSON needs to be produced to the standard output. Even
-informative messages need to be sent to standard error output.&lt;/p&gt;
+can be piped as input to &lt;a href=&quot;/doc/srctool&quot;&gt;&lt;code&gt;srctool&lt;/code&gt;&lt;/a&gt; which can then pipe its
+output into &lt;a href=&quot;/doc/srcanlzr&quot;&gt;&lt;code&gt;srcanlzr&lt;/code&gt;&lt;/a&gt;. Hence, for this to work, only JSON
+needs to be produced to the standard output. Even informative messages need to
+be sent to standard error output.&lt;/p&gt;
 
 &lt;p&gt;JSON marshalling shall follow the syntactic rules of the
 &lt;a href=&quot;http://godoc.org/github.com/DevMine/srcanlzr/src&quot;&gt;documentation&lt;/a&gt; in order for
@@ -84,9 +84,8 @@ be the name of the repository.&lt;/p&gt;
 
 &lt;p&gt;Furthermore, one of the attributes of the ‘Project’ structure is a list of
 language structures. The parser shall return a list of one element. It is
-&lt;a href=&quot;http://devmine.ch/doc/srcanlzr&quot;&gt;&lt;code&gt;srcanlzr&lt;/code&gt;&lt;/a&gt; which will take care of filling the
-languages list when merging different JSON objects from different parsers when
-appropriate.&lt;/p&gt;
+&lt;a href=&quot;/doc/srcanlzr&quot;&gt;&lt;code&gt;srcanlzr&lt;/code&gt;&lt;/a&gt; which will take care of filling the languages list
+when merging different JSON objects from different parsers when appropriate.&lt;/p&gt;
 
 &lt;p&gt;About the ‘Package’ structure, the ‘name’ attribute shall be the same as the
 name of the folder that contains source code files. For the specific case where
@@ -137,15 +136,15 @@ doubt, and feel free to write us an email if you have any questions.&lt;/p&gt;
       <item>
         <title>srctool presentation video</title>
         <description>&lt;p&gt;
-Here is a short video that shows  &lt;a href=&quot;http://devmine.ch/doc/srctool&quot;&gt;
-&lt;code&gt;srctool&lt;/code&gt;&lt;/a&gt; in action.
-This is the first one of a series of videos that demo the various DevMine tools.
+Here is a short video that shows &lt;a href=&quot;/doc/srctool&quot;&gt;&lt;code&gt;srctool&lt;/code&gt;&lt;/a&gt;
+in action. This is the first one of a series of videos that demo the various
+DevMine tools.
 &lt;/p&gt;
 &lt;p&gt;
 I suggest you watch it full screen for a better experience.
 &lt;/p&gt;
 &lt;p&gt;
-&lt;a href=&quot;http://devmine.ch/doc/srctool&quot;&gt;&lt;code&gt;srctool&lt;/code&gt;&lt;/a&gt; is a command
+&lt;a href=&quot;/doc/srctool&quot;&gt;&lt;code&gt;srctool&lt;/code&gt;&lt;/a&gt; is a command
 line tool to manage source code parsers.
 As such, it is able to install, delete or update parsers but moreover, it can
 be used to parse projects sources by running the language parsers and merging
