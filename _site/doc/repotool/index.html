@@ -258,45 +258,50 @@ command in a terminal (assuming <a href="http://golang.org/">Go</a> is installed
 <p><code>repotool</code> produces JSON, provided that you feed it with a path to a source code
 repository managed by a VCS which can be either in the form of a directory or a
 tar archive. By default, informative messages are outputted to <code>stderr</code> whereas
-JSON is outputted to <code>stdout</code>. Example usage:</p>
+JSON is outputted to <code>stdout</code>. To see the list of available options, use the
+<code>-h</code> flag. Example usage:</p>
 
 <pre><code>repotool ~/Code/myawesomeproject &gt; myawesomeproject.json
 </code></pre>
 
-<p>To insert data into the PostgreSQL database, you need to provide a configuration
-file in argument. Simply copy <code>repotool.conf.sample</code> to <code>repotool.conf</code> and
-adjust database connection information. See this
+<p><code>repotool-db</code> can be used to insert data into the PostgreSQL database.
+You need to provide a configuration file in argument. Simply copy
+<code>repotool.conf.sample</code> to <code>repotool.conf</code> and adjust database connection
+information at the very least. See this
 <a href="https://github.com/DevMine/repotool/blob/master/db/README.md">README.md</a> for
-more information about the database schema. Example usage:</p>
+more information about the database schema.
+<code>repotool-db</code> can be used to process multiple repositories in parallel. This is
+why, as opposed to <code>repotool</code>, it does not simply take a repository as argument
+but it takes a directory where it expects to find source code repositories. The
+depth at which repositories are expected to be found can be specified with the
+<code>depth</code> flag. To see the list of available options, use the <code>-h</code> flag. Example
+usage:</p>
 
-<pre><code>repotool -json=false -db -c repotool.conf ~/Code/myawesomeproject
+<pre><code>repotool-db -c repotool.conf ~/Code
 </code></pre>
 
-<p>With the configuration file, you can also tell <code>repotool</code> to output commit
+<p>With the configuration file, you can also tell <code>repotool-db</code> to insert commit
 deltas and commits patches (the latter works only if you enable commit deltas,
-quite logically). Simply set the <code>commit_deltas</code> and, eventually,
-<code>commit_patches</code>, to <code>true</code>. Be careful with the <code>commit_patches</code> option as this
-may rapidly produce a lot of data. Also note that if you plan on inserting data
-into a database, patches are not going to be inserted, whether you set
-<code>commit_patches</code> to <code>true</code> or not.</p>
+quite logically). Simply set the <code>commit_deltas</code> and to <code>true</code>. Note that the
+<code>commit_patches</code> option is ignored for now. <code>repotool-db</code> can process
+repositories concurrently by recursively traversing directories, spawning
+goroutines in the process.  When using it, bear in mind that <code>repotool-db</code> is IO
+and CPU intensive, hence do not spawn too many goroutines or you might reach the
+number of open files limit. The number of goroutines can be adjusted with the
+<code>-g</code> parameter.  Using about the same number of goroutines as the number of cpu
+cores should be a reasonable choice.</p>
 
 <p>As <code>libgit2</code> does not support reading information directly from a tar archive,
-when given a git repository as a tar archive, <code>repotool</code> will extract part of
-the archive into a temporary location. You can specify where using <code>tmp_dir</code>
-in the configuration file. We advise specifying a path to a ramdisk for
-increased performance and reduced main storage I/Os. When using a ramdisk with
-limited capacity, you shall specify the largest size for a tar archive to be
-extracted in <code>tmp_dir</code> using the <code>tmp_dir_file_size_limit</code> option. Every tar
-archive larger than this size will be extracted in its storage location instead.</p>
-
-<p>If you plan on batch processing multiple repositories, see
-<a href="https://github.com/DevMine/devmine/blob/master/tools/batch-repotool.go">batch-repotool.go</a>.
-It can process repositories concurrently by recursively traversing directories
-and calling <code>repotool</code>, spawning goroutines in the process.  When using it, bear
-in mind that <code>repotool</code> is IO and CPU intensive, hence do not spawn too many
-goroutines or you might reach the number of open files limit. The number of
-goroutines can be adjusted with the <code>-g</code> parameter.  Using about the same number
-of goroutines as the number of cpu cores should be a reasonable choice.</p>
+when given a git repository as a tar archive, <code>repotool</code>, or <code>repotool-db</code> will
+extract part of the archive into a temporary location. You can specify where
+using <code>tmp_dir</code> in the configuration file for <code>repotool-db</code> or by given the
+information as argument to <code>repotool</code>. We advise specifying a path to a ramdisk
+for increased performance and reduced main storage I/Os. When using a ramdisk
+with limited capacity, you shall specify the largest size for a tar archive to
+be extracted in <code>tmp_dir</code> using the <code>tmp_dir_file_size_limit</code> option from the
+configuration file for <code>repotool-db</code> or by using the appropriate flag for
+<code>repotool</code>. Every tar archive larger than this size will be extracted in its
+storage location instead.</p>
 
 
       </div>
@@ -310,7 +315,7 @@ of goroutines as the number of cpu cores should be a reasonable choice.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-06-05 14:09:54 +0200</small>
+    <small>Last site update: 2015-06-08 10:42:35 +0200</small>
     </p>
   </div>
 </footer>
