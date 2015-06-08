@@ -15,7 +15,7 @@ written in [Python](https://www.python.org/) but all of this code base is now
 obsolete. DevMine uses [PostgreSQL](http://www.postgresql.org/) as its database
 system and this component is essential to glue all sub-projects together.
 
-Current implementation of the DevMine project consists of 10 sub-projects:
+Current implementation of the DevMine project consists of 11 sub-projects:
 
  * [crawld][crawld]: is responsible for collecting metadata about developers
    as well as cloning source code repositories.
@@ -33,6 +33,7 @@ Current implementation of the DevMine project consists of 10 sub-projects:
    representation of it, in JSON.
  * [srcanlzr][srcanlzr]: analyzes source code, from the abstract
    representation produced by the various language parsers.
+ * [fluxio][fluxio]: a tool for JSON/PostgreSQL-jsonb I/Os
  * [featscomp][featscomp]: computes _features_ from all of the collected
    metadata and stores them into the database.
  * [API-server][api-server]: serves all data produced by the tools mentioned
@@ -73,6 +74,7 @@ The PostgreSQL database is used by [crawld][crawld], [repotool][repotool],
 [crawld]: /doc/crawld "crawld documentation"
 [ght2dm]: /doc/ght2dm "ght2dm documentation"
 [featscomp]: /doc/featscomp "featscomp documentation"
+[fluxio]: /doc/fluxio "fluxio documentation"
 [parsers]: /doc/parsers "parsers documentation"
 [srccat]: /doc/srccat "srccat documentation"
 [repotool]: /doc/repotool "repotool documentation"
