@@ -5,9 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Project</title>
-  <meta name="description" content="DevMine - A developer search engine and source code analysis framework
-">
+  <title>crawld presentation video</title>
+  <meta name="description" content="    Here is a video that present the tool    crawld.    crawld is a data crawler and a source    code repository fetcher. It is able to crawl metadata about ...">
   <meta name="author" content="Devmine team">
 
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
@@ -16,7 +15,7 @@
   <link rel="stylesheet" href="/lib/assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="/lib/assets/css/github-markdown.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="canonical" href="http://devmine.ch/project/">
+  <link rel="canonical" href="http://devmine.ch/news/2015/06/08/crawld-presentation/">
   <link rel="alternate" type="application/rss+xml" title="DevMine" href="http://devmine.ch/feed.xml" />
 
   <script type="text/javascript" src="/lib/assets/js/jquery.min.js"></script>
@@ -110,55 +109,55 @@
     <!-- Wrap all page content here -->
     <div id="wrap">
       <div class="container markdown-body">
-        <h1 id="the-devmine-project">The DevMine project</h1>
+        <div class="post">
 
-<h2 id="what-it-is-about">What it is about</h2>
+  <header class="post-header">
+    <h1 class="post-title">crawld presentation video</h1>
+    
+    <p class="post-meta">Jun 8, 2015
+        
+        • By <a href="/about/#lweingart">Laurent Weingart</a>
+            
+            - <a href="mailto:laurent.weingart@epfl.ch" target="_blank"><i class="fa fa-envelope-o"></i></a>
+            
+            
+            - <a href="https://github.com/lweingart" target="_blank"><i class="fa fa-github"></i></a>
+            
+            
+            
+        
+        
+    </p>
+  </header>
 
-<p>DevMine is a project born at <a href="http://information.epfl.ch/introduction">EPFL</a>
-with ultimate goals of providing a developer search engine and a source code
-analysis framework.</p>
+  <article class="post-content">
+    <p>
+    Here is a video that present the tool
+    <a href="/doc/crawld"><code>crawld</code></a>.
+</p>
+<p>
+    <a href="/doc/crawld"><code>crawld</code></a> is a data crawler and a source
+    code repository fetcher. It is able to crawl metadata about source code
+    repositories and developers from websites such as GitHub. All data is then
+    stored into a database.
+</p>
+<p>
+    Along with the crawler, the fetcher can clone and update source code
+    repositories fo further analysis through the devmine's tools.
+</p>
 
-<p>How are these goals related you may ask? Well, if you are looking for a
-developer, you mostly likely want to find one with abilities that correspond to
-your requirements and who does not produce loads of spaghetti code.</p>
 
-<p>So this means that for the developer search engine to be good, it needs not only
-to analyze things like in which programming languages a developer has
-contributions but also evaluate the quality of them. This is why there is a
-source code analysis framework and how it relates to the search engine.</p>
+<iframe src="https://player.vimeo.com/video/130108744?color=337ab7" width="800" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<h2 id="how-it-works">How it works</h2>
+  </article>
 
-<p>First, data needs to be collected. This might seem to be an easy to solve
-problem but it is not once you deal with a lot of data.
-DevMine collects metadata from platforms such as <a href="https://github.com/">GitHub</a>
-but it also downloads source code from projects.</p>
+ <a href="/news/categories/"> Categories :</a>
 
-<p>Once data has been collected, a source code analysis is run. This is where
-things get complicated since doing a source code analysis on one project is
-already something not trivial but doing it on millions of projects is even more
-challenging. The purpose of the analysis is to compute relevant metrics that
-will be available at a later stage to compute so called ‘features’.</p>
+  
+    <a href="/news/categories/video">video</a>
+  
 
-<p>Then there is the features computation stage. Features are used to evaluate
-things like coding proficiency using a specific programming paradigm, quality of
-contributions to an open source project and so on. These features are used to
-rank all developers according to a user query so the one that fits the best the
-query terms with the best expertise comes first.</p>
-
-<p>Finally, all of this would be useless if the data is not served. This is why
-there is a JSON RESTful API server which is used as the back-end to serve data
-for a front-end application where users are actually able to issue queries.</p>
-
-<h2 id="sounds-cool-can-i-try-it">Sounds cool, can I try it?</h2>
-
-<p>Well, unfortunately, not yet. The DevMine project has seen research and
-development for over a year now but is not ready for prime time yet even
-though we are starting to see encouraging results.</p>
-
-<h2 id="who-is-behind-the-project">Who is behind the project?</h2>
-
-<p>A group of student from EPFL. See <a href="/about/">about page</a> for more information.</p>
+</div>
 
       </div>
     </div>
