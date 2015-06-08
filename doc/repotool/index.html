@@ -283,12 +283,13 @@ usage:</p>
 <p>With the configuration file, you can also tell <code>repotool-db</code> to insert commit
 deltas and commits patches (the latter works only if you enable commit deltas,
 quite logically). Simply set the <code>commit_deltas</code> and to <code>true</code>. Note that the
-<code>commit_patches</code> option is ignored for now. <code>repotool-db</code> can process
+<code>commit_patches</code> option is ignored for now. However, you should know that
+inserting <code>commit_patches</code> slow things down a lot. <code>repotool-db</code> can process
 repositories concurrently by recursively traversing directories, spawning
-goroutines in the process.  When using it, bear in mind that <code>repotool-db</code> is IO
+goroutines in the process. When using it, bear in mind that <code>repotool-db</code> is IO
 and CPU intensive, hence do not spawn too many goroutines or you might reach the
 number of open files limit. The number of goroutines can be adjusted with the
-<code>-g</code> parameter.  Using about the same number of goroutines as the number of cpu
+<code>-g</code> parameter. Using about the same number of goroutines as the number of cpu
 cores should be a reasonable choice.</p>
 
 <p>As <code>libgit2</code> does not support reading information directly from a tar archive,
@@ -315,7 +316,7 @@ storage location instead.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-06-08 18:15:03 +0200</small>
+    <small>Last site update: 2015-06-08 19:34:13 +0200</small>
     </p>
   </div>
 </footer>
