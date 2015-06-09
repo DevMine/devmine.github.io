@@ -124,6 +124,28 @@
 a <a href="http://www.postgresql.org/">PostgreSQL</a> 9.4+ jsonb store and which can also
 output JSON from the database to its standard output.</p>
 
+<p><code>fluxio</code> needs to be provided a configuration file from which it can read
+database connexion information. You can simply rename <code>fluxio.conf.sample</code> to
+<code>fluxio.conf</code> and adjust options where necessary.</p>
+
+<p><code>fluxio</code> expects one table with two columns; one of type <code>character varying</code>
+which acts as the primary key (default name: key) and another one of type
+<code>jsonb</code> which acts as the JSON store (default name: content). You can specify
+the column names with the <code>-col-content</code> and <code>col-key</code> flags. If you do not use
+the default PostgreSQL schema, you can specify the schema name with the <code>-s</code>
+option.</p>
+
+<p><code>fluxio</code> expects to be provided a key in order to insert data into the database
+or to extract content from it. The key is provided using the <code>-k</code> flag.</p>
+
+<p><code>fluxio</code> can either import JSON into the specified table with the <code>-w</code> flag or
+read from the table and export JSON to standard output using the <code>-r</code> flag.</p>
+
+<p>To install <code>fluxio</code>, simply issue the following command:</p>
+
+<pre><code>go get -u github.com/DevMine/fluxio
+</code></pre>
+
 
       </div>
     </div>
@@ -136,7 +158,7 @@ output JSON from the database to its standard output.</p>
       - <a href="/about">contact us!</a>
     </p>
     <p>
-    <small>Last site update: 2015-06-08 20:24:00 +0200</small>
+    <small>Last site update: 2015-06-09 19:25:42 +0200</small>
     </p>
   </div>
 </footer>
