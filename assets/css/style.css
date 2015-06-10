@@ -122,6 +122,7 @@ code {
 }
 
 .dm-table {
+  display: table !important;
   border-collapse:separate;
   border-spacing:1em;
 }
