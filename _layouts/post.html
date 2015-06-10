@@ -23,17 +23,16 @@ layout: default
             {% endif %}
         {% endif %}
         {% if page.meta %} • {{ page.meta }}{% endif %}
+        <span class="pull-right">
+            <a href="{{ "/news/categories/" | prepend: site.baseurl }}"> Categories :</a>
+            {% for cat in page.categories %}
+                <a href="{{ cat | prepend: "/news/categories/" | prepend: site.baseurl }}">{{ cat }}</a>
+            {% endfor %}
+        </span>
     </p>
   </header>
 
   <article class="post-content">
     {{ content }}
   </article>
-
- <a href="{{ "/news/categories/" | prepend: site.baseurl }}"> Categories :</a>
-
-  {% for cat in page.categories %}
-    <a href="{{ cat | prepend: "/news/categories/" | prepend: site.baseurl }}">{{ cat }}</a>
-  {% endfor %}
-
 </div>
