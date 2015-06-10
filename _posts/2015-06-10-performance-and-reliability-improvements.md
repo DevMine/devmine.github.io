@@ -10,12 +10,12 @@ both the quality and reliability of some of the DevMine tools and more
 specifically about the improvements made on [crawld](/doc/crawld) and
 [repotool](/doc/repotool).
 
-Back in the last months of 2014, our focus on [crawld](/doc/crawld) has mainly 
+Back in the last months of 2014, our focus on [crawld](/doc/crawld) has mainly
 been on the crawlers part. The simple explanation is that the fetcher part was
 good enough for the amount of data we had back then. We knew some parts needed
 improvements like, for instance, the fetcher not being able to update a git
-repository being in a detached head state. However, performance was generally
-not an issue. This hold true until [ght2dm](/doc/ght2dm) came into the game.
+repository in a detached head state. However, performance was generally not an
+issue. This hold true until [ght2dm](/doc/ght2dm) came into the game.
 
 This spring, with [ght2dm](/doc/ght2dm), we started importing data from the
 [GHTorrent](http://ghtorrent.org/) project. Suddenly, from the mere tens of
@@ -43,7 +43,7 @@ content of a tar archive. However, it was another story for
 [repotool](/doc/repotool) and something even more challenging for
 [crawld](/doc/crawld).
 
-[repotool](/doc/repotool) use [git2go](https://github.com/libgit2/git2go), a
+[repotool](/doc/repotool) uses [git2go](https://github.com/libgit2/git2go), a
 Go binding to [libgit2](https://libgit2.github.com), a C library which
 implements the git protocol. Since it does not work on tar archives, the only
 way to get commits information is by extracting the archive, at least the `.git`
@@ -172,7 +172,7 @@ first what the right decision is to handle some errors.
 
 [crawld](/doc/crawld) used to skip a repository when it was not able to update
 it. Now, when this happens, unless it is due to a network error, it deletes it
-from disk and re-clone it. Not doing this when the error is network related is
+from disk and re-clones it. Not doing this when the error is network related is
 very important because sometimes repositories are deleted from remote and we do
 not want to delete our copy without any possibility to get it back afterwards.
 
@@ -185,44 +185,43 @@ quite sad if when checking if it still is running and you note that it has
 stopped running and, moreover, that this means it has to start over from the
 start again.
 
-This is way [crawld](/doc/crawld) now remembers, using a file, the ID of the
-last successfully processed repository. Hence, after a crash of having been
-stopped on a voluntary basis, it can resume operations where it stopped.
+This is why [crawld](/doc/crawld) now remembers, using a file, the ID of the
+last successfully processed repository. Hence, after a crash or having been
+stopped on a voluntary basis, it can resume its operations where it stopped.
 
 ### Use an error rate based throttler
 
 When a tool runs continuously for very long period of time, like
 [crawld](/doc/crawld), you usually simply deal with an error and log it. This is
-usually fine but think about how the tool would behave it the storage space is
+usually fine but think about how the tool would behave if the storage space is
 full or the network is down? Yes, [crawld](/doc/crawld) would record _a lot_ of
-errors and try to go on... This is obviously not a desired behavior. Our take on
-this problem was to implement an error rate based throttler. What it does now is
-that each error happening is not only dealt with and logged but it is also
-recorded by the error rate based throttler. When the error rates gets to high,
-and all the parameters can be adjusted by the user, which means that something
-really wrong is probably happening, it automatically throttles all routines for
-a predefined period of time. In consequence, [crawld](/doc/crawld) pauses
-operations and when the administrator resolves the underlying problem, such as
-freeing space on the storage device or restoring the network, all operations are
-resumed.
+errors and try to keep on going... This is obviously not a desired behavior. Our
+take on this problem was to implement an error rate based throttler. What it
+does now is that each error happening is not only dealt with and logged but it
+is also recorded by the error rate based throttler. When the error rates gets
+too high, and all the parameters can be adjusted by the user, which means that
+something really wrong is probably happening, it automatically throttles all
+routines for a predefined period of time. In consequence, [crawld](/doc/crawld)
+pauses operations and when the administrator resolves the underlying problem,
+such as freeing space on the storage device or restoring the network, all
+operations are resumed.
 
 ## Conclusion
 
 In this article, I mentioned several steps taken to improve performances and
 reliability of [crawld](/doc/crawld) and [repotool](/doc/repotool). Nothing much
-can be measured with regard to stability improvements but I can simply affirm
-that things are now way better. However, to asses my performance improvement
-claims, I shall provide some numbers. 
+can be measured with regard to stability improvements but I can simply say that
+things are now way better. However, to assess my performance improvement claims,
+I shall provide some numbers. 
 
-The [repotool](/doc/repotool) changes allow use to now insert ~20-25mio commits
+The [repotool](/doc/repotool) changes allow us to now insert ~20-25mio commits
 per day on our machine (currently a server with an Intel Xeon CPU E5-2630L v2 @
 2.40GHz processor, 128GB or ECC RAM and 20TB of storage in a 6 times 4TB RAID 5
 configuration), which is a big improvement comparing to the ~15mio in two weeks
 previously. To be completely fair, we do not insert commit diff deltas anymore
 but we gained a huge speedup nonetheless.
 
-As for [crawld](/doc/crawld), we have no real numbers to compare against.
-However, I can tell that we are now able to collect up to 8 times more data in a
-single day than we used to collect in a week. With our server and
-infrastructure, we are now able to clone/update ~6-8TB of repositories data per
-day.
+As for [crawld](/doc/crawld), we have no real numbers to compare with. However,
+I can say that we are now able to collect up to 8 times more data in a single
+day than we used to collect in a week. With our server and infrastructure, we
+are now able to clone/update ~6-8TB of repositories data per day.
