@@ -1,19 +1,58 @@
-# Author details
+# Authors information
+# current members
 robin:
     name: Robin Hahling
+    nick: Rolinh
     about: /about/#rolinh
+    picture: https://avatars.githubusercontent.com/u/1324157?v=3
     email: robin.hahling@gw-computing.net
     github: https://github.com/rolinh
     linkedin: https://www.linkedin.com/in/rhahling
     website: http://rolinh.ch/
 kevin:
     name: Kevin Gillieron
+    nick: gilliek
     about: /about/#gilliek
+    picture: https://avatars.githubusercontent.com/u/4227586?v=3
     email: kevin.gillieron@gw-computing.net
     github: https://github.com/gilliek
 laurent:
     name: Laurent Weingart
+    nick: lweingart
     about: /about/#lweingart
+    picture: https://avatars.githubusercontent.com/u/4840059?v=3
     email: laurent.weingart@epfl.ch
     github: https://github.com/lweingart
     linkedin: https://linkedin.com/in/laurentweingart
+amir:
+    name: Amir Shaikkha
+    nick: amirsh
+    about: /about/#amirsh
+    picture: https://avatars.githubusercontent.com/u/3438369?v=3
+    github: https://github.com/amirsh
+
+# past members
+daniel:
+    name: Daniel Espino Timón
+    nick: akathorn
+    about: /about/#akathorn
+    picture: https://avatars.githubusercontent.com/u/3438369?v=3
+    github: https://github.com/akathorn
+fred:
+    name: Frederik Galle
+    nick: koi
+    about: /about/#fregalle
+    picture: https://avatars.githubusercontent.com/u/1905692?v=3
+    github: https://github.com/FreGalle
+xuan:
+    name: Hoai Xuan Luang
+    nick: xuanluong
+    about: /about/#xuanluong
+    picture: https://avatars.githubusercontent.com/u/679643?v=3
+    github: https://github.com/xuanluong
+clement:
+    name: Clément Doucet
+    nick: Itah
+    about: /about/#itah
+    picture: https://avatars.githubusercontent.com/u/6977117?v=3
+    github: https://github.com/Itah
