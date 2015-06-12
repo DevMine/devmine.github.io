@@ -6,8 +6,8 @@
 </description>
     <link>http://devmine.ch/</link>
     <atom:link href="http://devmine.ch/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 11 Jun 2015 12:18:13 +0200</pubDate>
-    <lastBuildDate>Thu, 11 Jun 2015 12:18:13 +0200</lastBuildDate>
+    <pubDate>Fri, 12 Jun 2015 10:49:08 +0200</pubDate>
+    <lastBuildDate>Fri, 12 Jun 2015 10:49:08 +0200</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -220,7 +220,7 @@ operations are resumed.&lt;/p&gt;
 reliability of &lt;a href=&quot;/doc/crawld&quot;&gt;crawld&lt;/a&gt; and &lt;a href=&quot;/doc/repotool&quot;&gt;repotool&lt;/a&gt;. Nothing much
 can be measured with regard to stability improvements but I can simply say that
 things are now way better. However, to assess my performance improvement claims,
-I shall provide some numbers. &lt;/p&gt;
+I shall provide some numbers.&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href=&quot;/doc/repotool&quot;&gt;repotool&lt;/a&gt; changes allow us to now insert ~20-25mio commits
 per day on our machine (currently a server with an Intel Xeon CPU E5-2630L v2 @
